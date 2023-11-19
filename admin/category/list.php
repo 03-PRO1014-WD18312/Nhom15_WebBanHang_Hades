@@ -12,18 +12,29 @@
                 </tr>
             </thead>
             <?php
+
                 foreach($listCategory as $category) {
-                    
+                    extract($category);
+                    $edit = "index.php?act=edit_category&id=".$id;
+                    $delete = "index.php?act=delete_category&id=".$id;
+
                 
             ?>
             <tr>
                 <td><?=$category['id']?></td>
                 <td><?=$category['category_name']?></td>
-                <td><a href=""><i class="fa-trash"></i>DELETE</a> || <a href="">EDIT</a></td>
+                <td class="text-center">
+                    <a href="<?php echo $delete ?>"
+                        class="py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
+                            class="fa-solid fa-trash"></i></a>
+                    <a href="<?php echo $edit ?>"
+                        class="ml-5 py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
+                            class="fa-solid fa-pen "></i></a>
+                </td>
             </tr>
             <?php }  ?>
         </table>
-        <a class="btn btn-primary btn-lg p3" href="index.php?act=adddm" class="">ADD CATEGORY</a>
+        <a class="btn btn-primary btn-lg p3" href="index.php?act=add_category" class="">ADD CATEGORY</a>
 
     </div>
 </div>

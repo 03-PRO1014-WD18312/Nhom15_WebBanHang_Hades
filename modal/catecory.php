@@ -9,4 +9,8 @@
         $listCategory = pdo_query($sql);
         return $listCategory;
     }
+    function delete_category ($id){
+        $sql = "DELETE FROM `category` WHERE `category`.`id`=".$id;
+        pdo_execute($sql);
+    }
 ?>
