@@ -27,5 +27,5 @@
                 </ul>
             </div>
         </header>
-        <div class="main">
+        <div class="container">
         </div>

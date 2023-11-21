@@ -1,9 +1,9 @@
-<div class="row2">
+<div class="row2 ">
     <div class="row2 font_title">
         <h3>DANH SÁCH SẢN PHẨM</h3>
     </div>
     <div class="row2 form_content ">
-        <table class="table table-boder table-striped-columns table-bordered ">
+        <table class="table table-boder table-striped-columns table-bordered  ">
             <thead class="table-light">
                 <tr class="">
                     <th scope="col">Product Id</th>
@@ -17,27 +17,43 @@
                     <th scope="col">Image dt3</th>
                     <th scope="col">Category</th>
                     <th scope="col">Des</th>
+                    <th scope="col">Created at</th>
                     <th scope="col">Function</th>
-
+                    <img src="" alt="">
                 </tr>
             </thead>
             <?php
             foreach($listProduct as $product):
                 $edit = "index.php?act=edit_product&id=". $product['product_id'];
                 $delete = "index.php?act=delete_product&id=". $product['product_id'];
+                $imgPart = "../../images/Bottoms/".$product['product_image'];
+                $imgDt1Part = "../../images/Bottoms/".$product['image_dt1'];
+                $imgDt2Part = "../../images/".$product['image_dt2'];
+                $imgDt3Part = "../../images/".$product['image_dt3'];
+                if(is_file($imgPart || $imgDt1Part || $imgDt2Part || $imgDt3Part)){
+                    $productImg = '<img src="'.$imgPart.'" >';
+                    $img = $productImage;
+                    $productImageDt1 = "<img src='".$imgDt1Part."' >";
+                    $productImageDt2 = "<img src='".$imgDt2Part."' >";
+                    $productImageDt3 = "<img src='".$imgDt3Part."' >";
+                    var_dump($productImage);
+
+                }
             ?>
             <tr>
                 <td><?=$product['product_id']?></td>
                 <td><?=$product['product_name']?></td>
                 <td><?=$product['product_price']?></td>
+                <td><?=$product['product_qty']?></td>
                 <td><?=$product['discount']?></td>
-                <td><?=$product['product_image']?></td>
-                <td><?=$product['product_id']?></td>
-                <td><?=$product['image_dt1']?></td>
-                <td><?=$product['image_dt2']?></td>
-                <td><?=$product['image_dt3']?></td>
+                <td><img src="<?=$imgPart?>" alt="" width="30px" height="50px"></td>
+                <td><img src="<?=$imgDt1Part?>" alt="" width="30px" height="50px"></td>
+                <td><?=$productImageDt2?></td>
+                <td><?=$productImageDt3?></td>
                 <td><?=$product['category']?></td>
                 <td><?=$product['des']?></td>
+                <td><?=$product['created_at']?></td>
+
                 <td class="text-center">
                     <a href="<?php echo $delete ?>"
                         class="p-1 rounded border border-secondary btn btn-outline-warning"><i
