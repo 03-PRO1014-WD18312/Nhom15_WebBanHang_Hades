@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../fonfontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css">
 </head>
 
 <body>
@@ -19,13 +19,13 @@
             <div class="navbar bg-dark justify-content-center menu-header">
                 <ul class="nav ">
                     <li class="nav-item "><a href="#">Home</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=dm">Catecory</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=sp">Product</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=bl">Comment</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=dh">Order</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=tk">User</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=category">Catecory</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=product">Product</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=comment">Comment</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=order">Order</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=User">User</a></li>
                 </ul>
             </div>
         </header>
-        <div class="main">
+        <div class="container">
         </div>
