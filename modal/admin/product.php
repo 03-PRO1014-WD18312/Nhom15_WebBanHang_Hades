@@ -21,4 +21,5 @@
         $loadOneProduct = pdo_query_one($sql);
         return $loadOneProduct;
     }
+    
 ?>
