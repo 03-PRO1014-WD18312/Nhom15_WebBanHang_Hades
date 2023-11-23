@@ -30,7 +30,7 @@ $pro_detail = loadPopupPro($productId);
         <div class="quickview-content">
             <h2><?=$pr['product_name']?></h2>
             <div class="quickview-ratting-review">
-                <div class="quickview-ratting-wrap">
+                <!-- <div class="quickview-ratting-wrap">
                     <div class="quickview-ratting">
                         <i class="yellow fa fa-star"></i>
                         <i class="yellow fa fa-star"></i>
@@ -39,8 +39,8 @@ $pro_detail = loadPopupPro($productId);
                         <i class="fa fa-star"></i>
                     </div>
                     <a href="#"> (1 customer review)</a>
-                </div>
-                <div class="quickview-stock">
+                </div> -->
+                <div class="quickview-stock" style="margin-left:0px; margin-bottom:15px;">
                    <?php if($pr['product_qty'] >0):?>
                     <span><i class="fa fa-check-circle-o"></i> in stock</span>
                     <?php else:?>
@@ -48,7 +48,12 @@ $pro_detail = loadPopupPro($productId);
                         <?php endif;?>
                 </div>
             </div>
-            <h3><?=number_format($pr['product_price'])?>VNĐ</h3>
+            <?php if($pr['discount'] >0):?>
+            <h4><?=number_format($pr['product_price'] - ($pr['product_price'] * $pr['discount']/100))?>VNĐ</h4>
+            <del style="color:red; font-weight:bold;"><?=number_format($pr['product_price'])?>VNĐ</del>
+            <?php else:?>
+            <h4><?=number_format($pr['product_price'])?>VNĐ</h4>
+            <?php endif;?>
             <div class="quickview-peragraph">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
             </div>
@@ -76,7 +81,7 @@ $pro_detail = loadPopupPro($productId);
             </div>
             <div class="quantity">
                 <!-- Input Order -->
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <div class="button minus">
                         <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
                             <i class="ti-minus"></i>
@@ -88,7 +93,8 @@ $pro_detail = loadPopupPro($productId);
                             <i class="ti-plus"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
+                <input type = "number" class="input-num" min = "1" value = "1" max="1000">
                 <!--/ End Input Order -->
             </div>
             <div class="add-to-cart">
@@ -97,8 +103,8 @@ $pro_detail = loadPopupPro($productId);
                 <?php else:?>
                     <a href="#" class="btn">Add to cart</a>
                 <?php endif;?>
-                <a href="#" class="btn min"><i class="ti-heart"></i></a>
-                <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                <!-- <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                <a href="#" class="btn min"><i class="fa fa-compress"></i></a> -->
             </div>
             <div class="default-social">
                 <h4 class="share-now">Share:</h4>
