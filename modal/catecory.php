@@ -24,4 +24,5 @@
         $sql = "DELETE FROM `category` WHERE `category`.`id`=".$id;
         pdo_execute($sql);
     }
+    
 ?>

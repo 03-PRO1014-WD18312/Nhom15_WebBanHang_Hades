@@ -21,5 +21,28 @@
         $loadOneProduct = pdo_query_one($sql);
         return $loadOneProduct;
     }
-    
+    function updateProduct ($id,$productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt){
+        // $images = [$productImage,$imageDt1,$imageDt2,$imageDt3];
+        // foreach($images as $img){
+        //     if($img!=""){
+        //         $sql = "UPDATE `product` SET `product_name`='$productName',`product_price`='$productPrice',`discount`='$disCount',`product_qty`='$productQty',
+        //         `product_image`='$productImage',`image_dt1`='$imageDt1',`image_dt2`='$imageDt2',`image_dt3`='$imageDt3',`category`='$category',`des`='$des',`created_at`='$createdAt' WHERE `product_id` = '$id'";
+        //     }
+            
+        // }
+        $sql = "UPDATE `product` SET `product_name`='$productName',`product_price`='$productPrice',`discount`='$disCount',`product_qty`='$productQty',";
+
+        if($productImage!=""){
+                    $sql .= " `product_image`='$productImage',";
+        }if($imageDt1!=""){
+                    $sql .= " `image_dt1`='$imageDt1',";
+        }if($imageDt2!=""){
+                    $sql .= " `image_dt2`='$imageDt2',";
+        }if($imageDt3!=""){
+                    $sql .= " `image_dt3`='$imageDt3',";
+        }
+        $sql .= " `category`='$category',`des`='$des',`created_at`='$createdAt' WHERE `product_id` = '$id'";
+
+        pdo_execute($sql);
+    }
 ?>
