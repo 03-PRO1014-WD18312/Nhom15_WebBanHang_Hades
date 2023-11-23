@@ -1,4 +1,5 @@
 <?php
+// Load function
 function loadProduct(){
     $sql = "select * from product";
     $listPro = pdo_query($sql);
@@ -10,7 +11,6 @@ $listCate = pdo_query($sql);
 return $listCate;
 }
 function loadPopupPro($id){
-    // load thông tin của popup
     $sql = "  SELECT p.*, c.category_name as category_name
     FROM product p
     JOIN category c ON p.category = c.id
@@ -19,7 +19,6 @@ function loadPopupPro($id){
    return $pro;
 }
 function loadOneProduct($id){
-//    Load 1 sản phẩm
     $sql = "SELECT p.*, c.category_name as category_name
     FROM product p
     JOIN category c ON p.category = c.id
@@ -62,12 +61,16 @@ function loadProLimit9(){
     $listLimit9 = pdo_query($sql);
     return $listLimit9;
 }
+// End load function
+// Search function
 function searchProduct($searchResult){
     $sql = "SELECT product.*, category.category_name FROM product LEFT JOIN category ON product.category = category.id WHERE category.category_name LIKE '%$searchResult%' 
     OR product.product_name LIKE '%$searchResult%'";
     $listSearch = pdo_query($sql);
     return $listSearch;
 }
+// End search function
+// Login function
 function login($username,$password){
     $sql = "SELECT * FROM account WHERE username ='$username' AND password ='$password'";
     $login = pdo_query($sql);
@@ -90,4 +93,39 @@ function checkEmailExists($email){
     $result = pdo_query($sql);
     return $result && intval($result[0]['count']) > 0;
 }
-   
+// End login function
+// Cart function
+function insertCart($product_name,$product_price,$product_image,$qty,$total_price,$product_id){
+    $insertCart = "INSERT INTO cart (product_name, cart_price, product_image, qty,total_price,product_id) values ('$product_name','$product_price','$product_image','$qty','$total_price',$product_id)";
+    pdo_execute($insertCart);
+}
+function updateCart($product_name,$product_price,$product_image,$new_qty,$new_total_price,$product_id){
+$update_query = "UPDATE cart SET product_name = '$product_name',cart_price = '$product_price',product_image = '$product_image',qty = '$new_qty',total_price='$new_total_price',product_id='$product_id' 
+WHERE product_id = '$product_id'";
+pdo_execute($update_query);
+}
+function checkProduct($product_id){
+    $check_query = "SELECT product_id,qty FROM cart WHERE product_id = '$product_id'";
+    $check_exist = pdo_query_one($check_query);
+    return $check_exist;
+}
+function loadCart(){
+    $sql ="SELECT * from cart JOIN product  WHERE cart.product_id = product.product_id";
+    $listCart = pdo_query($sql);
+    return $listCart;
+}
+function updateProductQuantity($product_id,$new_total_qty){
+    $sql ="UPDATE product SET product_qty = '$new_total_qty' WHERE product_id = '$product_id'";
+    pdo_execute($sql);
+}
+function updateCartQuantity($product_id,$newTotalProduct){
+    $sql ="UPDATE product SET product_qty = '$newTotalProduct' WHERE product_id = '$product_id'";
+    pdo_execute($sql);
+}
+function countCart(){
+    $sql = "SELECT COUNT(*) AS count FROM cart";
+    $count = pdo_query_one($sql);
+    $countCart = $count['count'];
+    return $countCart;
+}
+// End cart function

@@ -33,40 +33,39 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+							<?php if(empty($listCart)):?>
+								<h2 stye="text-align:center;">Cart is empty now</h2>
+							<?php else:?>
+								<?php foreach ($listCart as $cart):?>
+								<tr>
+									<input type="hidden" name="product_id" class="product_id" value="<?=$cart['product_id']?>" id="">
+								<td class="image" data-title="No"><img src="../images/<?=$cart['product_image']?>" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Women Dress</a></p>
-									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+									<p class="product-name"><a href="#"><?=$cart['product_name']?></a></p>
+									<!-- <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p> -->
 								</td>
-								<td class="price" data-title="Price"><span>$110.00 </span></td>
+								<td class="price" data-title="Price"><span><?=number_format($cart['cart_price'])?>VNĐ</span></td>
 								<td class="qty" data-title="Qty"><!-- Input Order -->
-									<div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-												<i class="ti-minus"></i>
-											</button>
-										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div>
+								<input type="hidden" name="product_name" class="product_name" value="<?= $cart['product_name'] ?>" id="">
+    							<input type="hidden" name="product_image" class="product_image" value="<?= $cart['product_image'] ?>" id="">
+								<input type="text" name="productQty" class="productQty" value="<?=$cart['product_qty']?>" id="">
+								<input type="text" name="input-qty" value="<?=$cart['qty']?>">
+								<input style="margin-left:80px;" type = "number" class="input-num" min = "1" value = "<?=$cart['qty']?>">
 									<!--/ End Input Order -->
 								</td>
-								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
+								<td class="total-amount" data-title="Total"><span><?=number_format($cart['cart_price'] * $cart['qty'])?>VNĐ</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
-							<tr>
+							<?php endforeach;?>
+							<?php endif;?>
+							<!-- <tr>
 								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#">Women Dress</a></p>
 									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
 								</td>
 								<td class="price" data-title="Price"><span>$110.00 </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
+								<td class="qty" data-title="Qty">
 									<div class="input-group">
 										<div class="button minus">
 											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
@@ -80,7 +79,6 @@
 											</button>
 										</div>
 									</div>
-									<!--/ End Input Order -->
 								</td>
 								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
@@ -92,7 +90,7 @@
 									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
 								</td>
 								<td class="price" data-title="Price"><span>$110.00 </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
+								<td class="qty" data-title="Qty">
 									<div class="input-group">
 										<div class="button minus">
 											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[3]">
@@ -106,11 +104,10 @@
 											</button>
 										</div>
 									</div>
-									<!--/ End Input Order -->
 								</td>
 								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
@@ -123,24 +120,31 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
-									<div class="coupon">
+								<button class="btn update-button">Update</button>
+									<!-- <div class="coupon">
 										<form action="#" target="_blank">
 											<input name="Coupon" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
+											
 										</form>
 									</div>
 									<div class="checkbox">
 										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Cart Subtotal<span>$330.00</span></li>
+									<?php
+										$totalAmount =0;
+										foreach ($listCart as $cart) {
+											$totalAmount += $cart['cart_price'] * $cart['qty'];		
+										}
+										?>
+										<li>Cart Subtotal<span><?=number_format($totalAmount)?>VNĐ</span></li>
 										<li>Shipping<span>Free</span></li>
-										<li>You Save<span>$20.00</span></li>
-										<li class="last">You Pay<span>$310.00</span></li>
+										<!-- <li>You Save<span>$20.00</span></li> -->
+										<li class="last">You Pay<span><?=number_format($totalAmount)?>VNĐ</span></li>
 									</ul>
 									<div class="button5">
 										<a href="#" class="btn">Checkout</a>
