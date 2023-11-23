@@ -7,34 +7,35 @@
             <thead class="table-light">
                 <tr class="">
                     <th scope="col">ID</th>
-                    <th scope="col">Category_name</th>
-                    <th scope="col">Function</th>
+                    <th scope="col">ID USER</th>
+                    <th scope="col">COMMNET</th>
+                    <th scope="col">ID PRODUCT</th>
+                    <th scope="col">CREAT AT</th>
+                    <th scope="col">FUNCTION</th>
                 </tr>
             </thead>
             <?php
 
-                foreach($listCategory as $category) {
-                    extract($category);
-                    $edit = "index.php?act=edit_category&id=".$id;
-                    $delete = "index.php?act=delete_category&id=".$id;
+                foreach($listComment as $cmt) {
+                    extract($cmt);
+                    $delete = "index.php?act=delete_comment&id=".$id;
 
                 
             ?>
             <tr>
-                <td><?=$category['id']?></td>
-                <td><?=$category['category_name']?></td>
+                <td><?=1?></td>
+                <td><?=1?></td>
+                <td><?=1?></td>
+                <td><?=1?></td>
+                <td><?=1?></td>
                 <td class="text-center">
                     <a href="<?php echo $delete ?>"
                         class="py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
                             class="fa-solid fa fa-trash"></i></a>
-                    <a href="<?php echo $edit ?>"
-                        class="ml-5 py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
-                            class="fa-solid fa fa-pen"></i></a>
                 </td>
             </tr>
             <?php }  ?>
         </table>
-        <a class="btn btn-primary btn-lg p3" href="index.php?act=add_category" class="">ADD CATEGORY</a>
 
     </div>
 </div>
