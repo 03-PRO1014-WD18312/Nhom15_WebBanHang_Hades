@@ -2,7 +2,7 @@
 session_start();
     include "../modal/pdo.php";
     include "../modal/product.php";
-    // include "../modal/account-view.php";
+    include "../modal/account-view.php";
     $listPro = loadProduct();
     $listCate = loadCategories();
     $listSale = loadOnSale();

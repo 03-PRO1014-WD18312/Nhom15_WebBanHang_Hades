@@ -1,7 +1,7 @@
 <?php
 session_start();
  include "../modal/pdo.php";
- include "../modal/sanpham.php";
+ include "../modal/product.php";
  date_default_timezone_set('Asia/Ho_Chi_Minh');
 if(isset($_POST["rating_data"]))
 {
