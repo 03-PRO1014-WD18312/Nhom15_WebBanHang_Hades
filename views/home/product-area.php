@@ -41,8 +41,8 @@
 												<div class="single-product">
 													<div class="product-img">
 															<a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
-															<img class="default-img" src="../images/<?=$listCate[$i]['category_name']?>/<?=$pro['product_image']?>" alt="#">
-															<img class="hover-img" src="../images/<?=$listCate[$i]['category_name']?>/<?=$pro['image_dt1']?>" alt="#">
+															<img class="default-img" src="../images/<?=$pro['product_image']?>" alt="#">
+															<img class="hover-img" src="../images/<?=$pro['image_dt1']?>" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
@@ -54,16 +54,26 @@
 															<?php if($pro['product_qty'] == 0): ?>
 															<del>Add to cart</del>
 															<?php else:?>
-																<a title="Add to cart" href="#">Add to cart</a>
+																<a title="Add to cart" data-product-id="<?= $pro['product_id'] ?>"  data-product-name="<?= $pro['product_name'] ?>" 
+																data-product-image="<?= $pro['product_image'] ?>"    
+																data-product-price="<?= ($pro['discount'] > 0) ? $pro['product_price'] - ($pro['product_price'] * $pro['discount']/100) : 
+																$pro['product_price'] ?>"
+																data-product-qty="<?= $pro['product_qty'] ?>" class="buy-button">Add to cart</a>
 															<?php endif;?>
 																
 															</div>
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$pro['product_name']?></a></h3>
+														<h3><a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
+														<?=$pro['product_name']?></a></h3>
 														<div class="product-price">
-															<span><?=number_format($pro['product_price'])?>VNĐ</span>
+															<?php if($pro['discount'] >0):?>
+																<span><?=number_format($pro['product_price'] - ($pro['product_price'] 
+															* $pro['discount']/100))?>VNĐ</span> <del style="color:red;"><?=number_format($pro['product_price'])?>VNĐ</del>
+															<?php else:?>
+																<span><?=number_format($pro['product_price'])?>VNĐ</span>
+															<?php endif;?>															
 														</div>
 													</div>
 												</div>

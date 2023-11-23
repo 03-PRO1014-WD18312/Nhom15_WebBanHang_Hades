@@ -4,31 +4,31 @@
         <div class = "product-imgs">
           <div class = "img-display">
             <div class = "img-showcase">
-              <img src = "../images/<?=$cateName?>/<?=$proOne['product_image']?>" alt = "shoe image">
-              <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt1']?>" alt = "shoe image">
-              <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt2']?>" alt = "shoe image">
-              <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt3']?>" alt = "shoe image">
+              <img src = "../images/<?=$proOne['product_image']?>" alt = "shoe image">
+              <img src = "../images/<?=$proOne['image_dt1']?>" alt = "shoe image">
+              <img src = "../images/<?=$proOne['image_dt2']?>" alt = "shoe image">
+              <img src = "../images/<?=$proOne['image_dt3']?>" alt = "shoe image">
             </div>
           </div>
           <div class = "img-select">
             <div class = "img-item">
               <a href = "#" data-id = "1">
-                <img src = "../images/<?=$cateName?>/<?=$proOne['product_image']?>" alt = "shoe image">
+                <img src = "../images/<?=$proOne['product_image']?>" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item">
               <a href = "#" data-id = "2">
-                <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt1']?>" alt = "shoe image">
+                <img src = "../images/<?=$proOne['image_dt1']?>" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item">
               <a href = "#" data-id = "3">
-                <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt2']?>" alt = "shoe image">
+                <img src = "../images/<?=$proOne['image_dt2']?>" alt = "shoe image">
               </a>
             </div>
             <div class = "img-item">
               <a href = "#" data-id = "4">
-                <img src = "../images/<?=$cateName?>/<?=$proOne['image_dt3']?>" alt = "shoe image">
+                <img src = "../images/<?=$proOne['image_dt3']?>" alt = "shoe image">
               </a>
             </div>
           </div>
@@ -43,7 +43,7 @@
           <i class="yellow fa fa-star"></i>
           <i class="yellow fa fa-star"></i>
           <i class="fa fa-star"></i>
-            <span>4.7(21)</span>
+          <span>4.7(21)</span>
           </div>
 
           <div class = "product-price">
@@ -58,32 +58,22 @@
           </div>
 
           <div class = "purchase-info">
-            <input type = "number" min = "1" value = "1">
             <button type = "button" class = "btn">
-              Add to Cart <i class="fa fa-cart-arrow-down"></i>
+               Buy now
             </button>
-            <button type = "button" class = "btn">Compare</button>
+            <!-- <button type = "button" class = "btn">Compare</button> -->
           </div>
 
-          <div class = "social-links">
-            <p>Share At: </p>
-            <a href = "#">
-              <i class = "fab fa-facebook-f"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-twitter"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-instagram"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-whatsapp"></i>
-            </a>
-            <a href = "#">
-              <i class = "fab fa-pinterest"></i>
-            </a>
-          </div>
+          <div class="default-social" style="margin-top:50px;">
+                <h4 class="share-now">Share:</h4>
+                <ul>
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                    <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
         </div>
       </div>
     </div>
-  <?php include 'product-detail/rating-system.php';?>
+  <?php include 'product-detail/rating-system.php';?>=

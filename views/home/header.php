@@ -2,7 +2,7 @@
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 // Đếm tổng số lượng sản phẩm
 $totalProducts = totalPro();
-$productsPerPage = 3;
+$productsPerPage = 9;
 // Lấy ra số trang của sản phẩm
 $totalPages = ceil($totalProducts / $productsPerPage);
 if ($page < 0) {
@@ -22,6 +22,8 @@ if(isset($_GET['search'])){
 if(isset($_SESSION['user_id'])){
 	$showAccountInfo = showAccount($_SESSION['user_id']);
 }
+$listCart = loadCart();
+$countCart = countCart();
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -144,31 +146,39 @@ if(isset($_SESSION['user_id'])){
 									<?php endif;?>			
 							</div>
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count"><?=$countCart?></span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
+									<span><?=$countCart?> Items</span>
 										<a href="#">View Cart</a>
 									</div>
 									<ul class="shopping-list">
-										<li>
+									<?php foreach($listCart as $cart):?>
+											<li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
+											<a class="cart-img" href="#"><img src="../images/<?=$cart['product_image']?>" alt="#"></a>
+											<h4><a href="#"><?=$cart['product_name']?></a></h4>
+											<p class="quantity"><?=$cart['qty']?>x - <span class="amount"><?=number_format($cart['cart_price'])?>VVĐ</span></p>
 										</li>
-										<li>
+										<?php endforeach;?>
+										<!-- <li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
 											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
 											<h4><a href="#">Woman Necklace</a></h4>
 											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+										</li> -->
 									</ul>
 									<div class="bottom">
 										<div class="total">
+										 <?php
+                                             $totalAmount =0;
+											 foreach($listCart as $cart){
+												 $totalAmount += $cart['cart_price']*$cart['qty'];
+											 }
+											?>
 											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span class="total-amount"><?=number_format($totalAmount)?>VNĐ</span>
 										</div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>
