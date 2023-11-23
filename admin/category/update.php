@@ -12,8 +12,9 @@
             <?php
                     if(isset($check)&&$check!= ""){
                         ?>
-            <p class=" text-success fst-italic "><?="".$check."";?></p>
-            <?php
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <?=$check?>
+            </div> <?php
                     }
                     if(isset($error)){
                         for($i= 0;$i<count($error);$i++){
