@@ -2,10 +2,11 @@
     include_once("header.php");
     include_once("../modal/pdo.php");
     include_once("../modal/catecory.php");
-    include_once("../modal/account.php");
+    include_once("../modal/admin/account.php");
     include_once("../modal/admin/product.php");
+    include_once("../modal/admin/comment.php");
 
-
+    
     $listCategory = loadAll_Category ();
     $error = [];
     $listProduct=loadAll_Product();
@@ -46,13 +47,13 @@
                 break;
             case "delete_category": 
                 if(isset($_GET['id'])&&($_GET['id']>0)){
-
-                    delete_category($_GET['id']);
+                    $id = $_GET['id'];
+                    deleteCategory($id);
 
                 }
                 $listCategory = loadAll_Category ();
                 include "category/list.php";                
-                break;
+                break;  
             case "edit_category":
                 if(isset($_GET['id'])&&($_GET['id']>0)){           
                     $id = $_GET['id'];

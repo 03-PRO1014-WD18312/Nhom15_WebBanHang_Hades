@@ -20,9 +20,9 @@
         return $listCategory;
     }
 
-    function delete_category ($id){
-        $sql = "DELETE FROM `category` WHERE `category`.`id`=".$id;
-        pdo_execute($sql);
+    function deleteCategory ($id){
+        $sql = "DELETE FROM `category` WHERE `category`.`id`=$id";
+        pdo_execute($sql);  
     }
     
 ?>

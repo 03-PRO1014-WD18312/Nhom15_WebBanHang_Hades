@@ -2,7 +2,7 @@
     <div class="row2 font_title">
         <h3>DANH SÁCH SẢN PHẨM</h3>
     </div>
-    <div class="row2 form_content ">
+    <div class="row2 form_content pt-4">
         <table class="table table-boder table-striped-columns table-bordered  ">
             <thead class="table-light">
                 <tr class="">
@@ -26,10 +26,10 @@
             foreach($listProduct as $product):
                 $edit = "index.php?act=edit_product&id=". $product['product_id'];
                 $delete = "index.php?act=delete_product&id=". $product['product_id'];
-                $imgPart = "../images/Bottoms/".$product['product_image'];
-                $imgDt1Part = "../images/Bottoms/".$product['image_dt1'];
-                $imgDt2Part = "../images/Bottoms/".$product['image_dt2'];
-                $imgDt3Part = " ../images/Bottoms/".$product['image_dt3'];
+                $imgPart = "../images/".$product['product_image'];
+                $imgDt1Part = "../images/".$product['image_dt1'];
+                $imgDt2Part = "../images/".$product['image_dt2'];
+                $imgDt3Part = " ../images/".$product['image_dt3'];
                 
             ?>
             <tr>

@@ -1,6 +1,7 @@
 <?php
     function loadAllAccount () {
         $sql = "SELECT * FROM `account` ORDER BY `id` DESC";
-        pdo_execute($sql);
+        $listUser = pdo_query($sql);
+        return $listUser;
     }
 ?>

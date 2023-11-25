@@ -1,10 +1,10 @@
 <?php 
     if(is_array($productOne)){
         extract($productOne);
-        $imgPart = "../images/Bottoms/".$productOne['product_image'];
-        $imgDt1Part = "../images/Bottoms/".$productOne['image_dt1'];
-        $imgDt2Part = "../images/Bottoms/".$productOne['image_dt2'];
-        $imgDt3Part = " ../images/Bottoms/".$productOne['image_dt3'];
+        $imgPart = "../images/".$productOne['product_image'];
+        $imgDt1Part = "../images/".$productOne['image_dt1'];
+        $imgDt2Part = "../images/".$productOne['image_dt2'];
+        $imgDt3Part = " ../images/".$productOne['image_dt3'];
     }
 ?>
 <div class="container">
