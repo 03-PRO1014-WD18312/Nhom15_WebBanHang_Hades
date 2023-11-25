@@ -18,8 +18,8 @@
 							<div class="single-product">
 							<div class="product-img">
 								<a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
-									<img class="default-img" src="../images/<?=$listCate[$i]['category_name']?>/<?=$pro['product_image']?>" alt="#">
-									<img class="hover-img" src="../images/<?=$listCate[$i]['category_name']?>/<?=$pro['image_dt1']?>" alt="#">
+									<img class="default-img" src="../images/<?=$pro['product_image']?>" alt="#">
+									<img class="hover-img" src="../images/<?=$pro['image_dt1']?>" alt="#">
 									<?php if($pro['view'] > 30):?>
 										<span class="out-of-stock">Hot</span>
 										<?php elseif($pro['created_at'] > '2023-11-11'):?>

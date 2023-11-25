@@ -33,10 +33,13 @@
 								<!-- Start Single Tab -->
 						<?php for ($i = 0; $i < count($listCate); $i++): ?>
 						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
+						<?php $productExitst = true;?>
 							<div class="tab-single">
 								<div class="row">
+									<?php $productExitst = false;?>
 									<?php foreach ($listPro as $pro): ?>
-										<?php if ($pro['category'] == $listCate[$i]['id']): ?>
+									<?php if ($pro['category'] == $listCate[$i]['id']): ?>
+										<?php $productExitst = true;?>
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
@@ -78,12 +81,17 @@
 													</div>
 												</div>
 											</div>
-										<?php endif;?>
+									<?php endif;?>
 									<?php endforeach;?>
 								</div>
 							</div>
 						</div>
 					<?php endfor;?>
+					<?php if(!$productExitst):?>
+						<div class="col-12">
+						<p>Product not available yet.</p>
+						</div>
+						<?php endif;?>
 
 								<!--/ End Single Tab -->
 								<!-- Start Single Tab -->
