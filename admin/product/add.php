@@ -8,13 +8,21 @@
     <?php }?>
     <form action="index.php?act=add_product" method="POST" enctype="multipart/form-data">
         <label for="">Tên Sản Phẩm</label>
-        <input type=" text" class="input-group form-control form-control-sm" name="productName">
+        <input type=" text" class="input-group form-control form-control-sm" name="productName"
+            placeholder="Tên sản phẩm...">
+        <p class="font-italic text-danger">
+            <?=(isset($error['productName'])) ? $error["productName"]:false;?>
+        </p>
         <label for="">Giá Sản Phẩm</label>
-        <input type="text" class="input-group form-control form-control-sm" name="productPrice">
+        <input type="text" class="input-group form-control form-control-sm" name="productPrice"
+            placeholder="Giá sản phẩm...">
+        <p class="font-italic text-danger"><?=(isset($error['productPrice'])) ? $error['productPrice'] :false;?></p>
         <label for="">Giảm giá</label>
-        <input type="text" class="input-group form-control form-control-sm" name="discount">
+        <input type="text" class="input-group form-control form-control-sm" name="discount" placeholder="Giảm giá...">
+        <p class="font-italic text-danger"><?=(isset($error['discount'])) ? $error["productPrice"]:false;?></p>
         <label for="">Số lượng</label>
-        <input type="text" class="input-group form-control form-control-sm" name="productQty">
+        <input type="text" class="input-group form-control form-control-sm" name="productQty" placeholder="Số lượng...">
+        <p class="font-italic text-danger"><?=(isset($error['productQty'])) ? $error["productQty"]:false;?></p>
         <label for="">Ảnh</label>
         <input type="file" required class="mt-5 " name="productImage"><br>
         <label for="">Ảnh 1</label>
@@ -26,6 +34,7 @@
         <label for="">Loại</label>
         <select name="category" id="" class="mt-5">
             <?php 
+             
             foreach($listCategory as $category) {
             
             ?>
@@ -35,7 +44,8 @@
             ?>
         </select><br>
         <label for="">Thông tin sản phẩm</label>
-        <textarea class="input-group form-control form-control-sm" name="des" id="" cols="30" rows="10"></textarea>
+        <textarea class="input-group form-control form-control-sm" name="des" id="" cols="30" rows="10"
+            placeholder="Thông tin sản phẩm..."></textarea>
         <button type="submit" value="1" class="mt-5 btn btn-primary btn-lg" name="btnAdd">ADD</button>
     </form>
     <?php
@@ -46,14 +56,6 @@
                     if(isset($error)){
                         for($i= 0;$i<count($error);$i++){
                             ?>
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:">
-            <use xlink:href="#exclamation-triangle-fill" />
-        </svg>
-        <div>
-            <?=$error[$i];?>
-        </div>
-    </div>
     <?php
                         }
                     }

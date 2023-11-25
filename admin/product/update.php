@@ -5,7 +5,14 @@
         $imgDt1Part = "../images/".$productOne['image_dt1'];
         $imgDt2Part = "../images/".$productOne['image_dt2'];
         $imgDt3Part = " ../images/".$productOne['image_dt3'];
-    }
+    };
+    
+                    if(isset($check)&&$check!= ""){
+                        ?>
+<div class="alert alert-success d-flex align-items-center" role="alert">
+    <?=$check?>
+</div>
+<?php }
 ?>
 <div class="container">
     <?php if(isset($check)){
@@ -18,13 +25,22 @@
         <label for="">Tên Sản Phẩm</label>
         <input type=" text" class="input-group form-control form-control-sm" name="productName"
             value="<?=$product_name ?>">
+        <p class="font-italic text-danger">
+            <?=(isset($error['productName'])) ? $error["productName"]:" ";?>
+        </p>
         <label for="">Giá Sản Phẩm</label>
         <input type="text" class="input-group form-control form-control-sm" name="productPrice"
             value="<?=$product_price ?>">
+        <p class="font-italic text-danger">
+            <?=(isset($error['productPrice'])) ? $error["productPrice"]:false;?>
+        </p>
         <label for="">Giảm giá</label>
         <input type="text" class="input-group form-control form-control-sm" name="discount" value="<?=$discount?>">
         <label for="">Số lượng</label>
         <input type="text" class="input-group form-control form-control-sm" name="productQty" value="<?=$product_qty?>">
+        <p class="font-italic text-danger">
+            <?=(isset($error['productQty'])) ? $error["productQty"]:false;?>
+        </p>
         <label for="">Ảnh</label>
         <input type="file" class="mt-5 " name="productImage" value="<?=$imgPart?>"><img src="<?=$imgPart?>" alt=""
             width="80px" height="100px"><br>

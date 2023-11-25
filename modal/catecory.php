@@ -25,4 +25,9 @@
         pdo_execute($sql);  
     }
     
+    function deleteCategory_from_product ($id){
+        deleteAll ($id);
+        $sql = "DELETE FROM `category` WHERE `category`.`id`=$id";
+        pdo_execute($sql);  
+    }
 ?>
