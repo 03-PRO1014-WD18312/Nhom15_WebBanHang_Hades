@@ -30,10 +30,10 @@
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li> -->
-								</ul>
+							</ul>
 								<!--/ End Tab Nav -->
 							</div>
-							<div class="tab-content" id="myTabContent">
+						<div class="tab-content" id="myTabContent">
 								<!-- Start Single Tab -->
 						<?php for ($i = 0; $i < count($listCate); $i++): ?>
 						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
@@ -66,8 +66,7 @@
 																data-product-price="<?= ($pro['discount'] > 0) ? $pro['product_price'] - ($pro['product_price'] * $pro['discount']/100) : 
 																$pro['product_price'] ?>"
 																data-product-qty="<?= $pro['product_qty'] ?>" class="buy-button">Add to cart</a>
-															<?php endif;?>
-																
+															<?php endif;?>				
 															</div>
 														</div>
 													</div>
@@ -96,7 +95,6 @@
 						<p>Product not available yet.</p>
 						</div>
 					<?php endif;?>
-
                         <!--/ End Single Tab -->
                         <!-- Start Single Tab -->
                         <!-- <div class="tab-pane fade" id="Bottoms" role="tabpanel">
