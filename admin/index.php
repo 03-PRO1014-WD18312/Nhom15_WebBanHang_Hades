@@ -5,13 +5,16 @@
     include_once("../modal/admin/account.php");
     include_once("../modal/admin/product.php");
     include_once("../modal/admin/comment.php");
-
+    include_once("../modal/admin/global.php");
+    $records_per_page = 10;
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start_from = ($current_page - 1) * $records_per_page;
+    $error = [];
     
     $listCategory = loadAll_Category ();
-    $error = [];
     $listProduct=loadAll_Product();
-    $pattern = " /[a-z'']/ ";
-
+    $pattern = "/[0-9]/ ";
+    
     // if(isset($listCategory)){
     //     for($i=0;$i<=count($id);$i++){
     //         echo $i;
@@ -19,9 +22,6 @@
     //     // if($listCategory['id'])
     // }
     
-
-
-        
     if(isset($_GET["act"])){
         $act = $_GET["act"];
         switch ($act) {
@@ -30,14 +30,16 @@
                 break;
             case "add_category":
                 if(isset($_POST['btn-add'])&&($_POST['btn-add'])){
-                    if(($_POST['category_name'] =="" )){
-                        $error[] ="Không được để trống";
+                    $categoryName = $_POST['category_name'];
+
+                    if(($categoryName =="")){
+                    
+                        $error[] ="Không được để trống";                      
                     }
-                    if(!preg_match($pattern, $_POST['category_name'])){
-                        $error[]= "Không được chứa ký tự đặc biệt";
-                        
-                    }else{
-                        $category_name = $_POST['category_name'];
+                    if (validate_alpha($categoryName)) {
+                        $error[] = "Tên chỉ chứa ký tự chữ.";
+                    }
+                    else{
                     insert_category($category_name);
                     $check = "ADDED SUCCESSFULLY";
                     }
@@ -48,7 +50,9 @@
             case "delete_category": 
                 if(isset($_GET['id'])&&($_GET['id']>0)){
                     $id = $_GET['id'];
-                    deleteCategory($id);
+
+                    deleteCategory_from_product ($id);
+                    // deleteCategory($id);
 
                 }
                 $listCategory = loadAll_Category ();
@@ -65,26 +69,25 @@
                 if(isset($_POST['btnUpdate']) && ($_POST['btnUpdate'])){
                     $id = $_POST['id'];
                     $categoryName = $_POST['category_name'];
-
-                    if(($_POST['category_name'] =="")){
+                    if(($categoryName =="")){
                     
                         $error[] ="Không được để trống";                      
                     }
-                    if(!preg_match($pattern, $_POST['category_name'])){
-                        $error[]= "Không được chứa ký tự đặc biệt";
+                    if (validate_alpha($categoryName)) {
+                        $error[] = "Tên chỉ chứa ký tự chữ.";
                     }
                     else{
                     updateCategory ($id,$categoryName);
                     $check = "UPDATE SUCCESS";
-                    // echo $categoryOne['id'];
-                    // echo $categoryOne['category_name'];
-                    }
-                    $categoryOne = loadOne_Category($id);
+                }
+                $categoryOne = loadOne_Category($id);
                 
                 }
                 include "category/update.php";                
                 break;              
             case "product":
+                if(isset($_POST['btnUpdate']) && ($_POST['btnUpdate'])){
+                }
                 $listProduct = loadAll_Product ();
                 include "product/list.php";
                 break;
@@ -102,21 +105,6 @@
                     $productPrice= $_POST["productPrice"];
                     $disCount = $_POST["discount"];
                     $productQty = $_POST["productQty"];
-
-                    
-                    // $targetFile = $targetDir . basename($_FILES["productImage"]["name"]); // Đường dẫn file đích
-                    // $productImage = $fileName;
-                    // // Kiểm tra nếu file đã tồn tại
-                    // if (file_exists($targetFile)) {
-                    //     echo "File đã tồn tại.";
-                    // } else {
-                    //     // Di chuyển file đã upload vào thư mục đích
-                    //     if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetFile)) {
-                    //         echo "Upload file thành công.";
-                    //     } else {
-                    //         echo "Có lỗi xảy ra khi upload file.";
-                    //     }
-                    
                     // upload file
                     $fileName = $_FILES["productImage"]["name"];
                     $targetDir = "../images/";
@@ -141,14 +129,35 @@
                     $targetFile = $targetDir . basename($_FILES['imageDt3']['name']);
                     $imageDt3 = $fileNameDt3;
                     move_uploaded_file($_FILES['imageDt3']['tmp_name'], $targetFile);
-
-                    
                     $category = $_POST["category"];
                     $des = $_POST["des"];
                     $createdAt = date("d-m-Y");
-                    // checkError($productName,$productPrice,$discout,$productQty);
-                    insert_product($productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt);
-                    $check = "ADDED SUCCESSFULLY";
+                    if(empty($productName)){
+                        $error['productName'] = "Yêu cầu nhập vào tên sản phẩm";
+                    }
+                    if(empty($productPrice)){
+                        $error['productPrice'] = "Yêu cầu nhập vào giá sản phẩm";
+                    } else if(!validate_numeric_length($productPrice)){
+                        $error['productPrice'] = "Giá hợp lệ chỉ chứa ký tự số và có độ dài lớn hơn 4 ký tự";
+                    }
+                    // if(empty($disCount)){
+                    //     $error['discount'] = "Yêu cầu nhập vào giá sản phẩm";
+                    // }
+                    if(empty($productQty)){
+                        $error['productQty'] = "Yêu cầu nhập vào số lượng sản phẩm";
+                    }
+                    // checkError($productName,$productPrice,$disCount,$productQty);
+                    // echo "<pre>";
+                    // print_r($error);
+                    //  echo "</pre>";
+                    if(empty($error)){
+
+                        insert_product($productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt);
+                        $check = "ADDED SUCCESSFULLY";
+                    } else{
+                        echo "Fail";
+                    }
+
 
                     
                 }
@@ -171,21 +180,6 @@
                     $productPrice= $_POST["productPrice"];
                     $disCount = $_POST["discount"];
                     $productQty = $_POST["productQty"];
-
-                    
-                    // $targetFile = $targetDir . basename($_FILES["productImage"]["name"]); // Đường dẫn file đích
-                    // $productImage = $fileName;
-                    // // Kiểm tra nếu file đã tồn tại
-                    // if (file_exists($targetFile)) {
-                    //     echo "File đã tồn tại.";
-                    // } else {
-                    //     // Di chuyển file đã upload vào thư mục đích
-                    //     if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetFile)) {
-                    //         echo "Upload file thành công.";
-                    //     } else {
-                    //         echo "Có lỗi xảy ra khi upload file.";
-                    //     }
-                    
                     // upload file
                     $fileName = $_FILES["productImage"]["name"];
                     $targetDir = "../images/";
@@ -214,9 +208,31 @@
                     $des = $_POST["des"];
                     $createdAt = date("d-m-Y");
                     // checkError($productName,$productPrice,$discout,$productQty);
-                    updateProduct ($id,$productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt);
+                    if(empty($productName)){
+                        $error['productName'] = "Yêu cầu nhập vào tên sản phẩm";
+                    }
+                    if(empty($productPrice)){
+                        $error['productPrice'] = "Yêu cầu nhập vào giá sản phẩm";
+                    } else if(!validate_numeric_length($productPrice)){
+                        $error['productPrice'] = "Giá hợp lệ chỉ chứa ký tự số và có độ dài lớn hơn 4 ký tự";
+                    }
+                    // if(empty($disCount)){
+                    //     $error['discount'] = "Yêu cầu nhập vào giá sản phẩm";
+                    // }
+                    if(empty($productQty)){
+                        $error['productQty'] = "Yêu cầu nhập vào số lượng sản phẩm";
+                    }
+                    // echo "<pre>";
+                    // print_r($error);
+                    //  echo "</pre>";
+                    if(empty($error)){
+
+                        updateProduct ($id,$productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt);
+                        $check = "UPDATE SUCCESS";
+                    } else{
+                        echo "Fail";
+                    }
                     
-                    $check = "UPDATE SUCCESS";
                     $productOne = loadOneProduct($id);
                     
                 }
@@ -229,7 +245,19 @@
             case "user":
                 $loadUser = loadAllAccount ();
                 include "user/list.php";
-                break;                
+                break; 
+            case "delete_user":
+                if(isset($_GET['id']) && ($_GET['id'])){
+                    $id = $_GET['id'];
+                    deleteAccount($id);
+                }
+                $loadUser = loadAllAccount ();
+                include "user/list.php";
+                break;  
+            case "edit_user":
+                $loadUser = loadAllAccount ();
+                include "user/list.php";
+                break;                 
         }
     }
 

@@ -19,7 +19,7 @@
                     if(isset($error)){
                         for($i= 0;$i<count($error);$i++){
                             ?>
-            <p class=" text-danger fst-italic "><?=$error[$i];?></p>
+            <p class=" text-danger font-italic "><?=$error[$i];?></p>
             <?php
                         }
                     }

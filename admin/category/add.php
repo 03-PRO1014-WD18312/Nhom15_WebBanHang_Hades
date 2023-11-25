@@ -10,7 +10,7 @@
             <input class="form-control form-control-lg" name="category_name" aria-describedby="inputGroup-sizing-lg"
                 type="text">
             <?php
-                    if(isset($check)&&$check!= ""){
+                    if(isset($check)&&$check!=""){
                         ?>
             <div class="alert alert-success d-flex align-items-center" role="alert">
                 <?=$check?>
@@ -19,7 +19,7 @@
                     if(isset($error)){
                         for($i= 0;$i<count($error);$i++){
                             ?>
-            <p class=" text-danger fst-italic "><?=$error[$i];?></p>
+            <p class=" text-danger font-italic "><?=$error[$i];?></p>
             <?php
                         }
                     }

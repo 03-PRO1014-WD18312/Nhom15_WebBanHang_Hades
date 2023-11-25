@@ -30,6 +30,7 @@
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li> -->
+
 							</ul>
 								<!--/ End Tab Nav -->
 							</div>
@@ -95,6 +96,7 @@
 						<p>Product not available yet.</p>
 						</div>
 					<?php endif;?>
+
                         <!--/ End Single Tab -->
                         <!-- Start Single Tab -->
                         <!-- <div class="tab-pane fade" id="Bottoms" role="tabpanel">
