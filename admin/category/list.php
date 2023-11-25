@@ -8,6 +8,7 @@
                 <tr class="">
                     <th scope="col">ID</th>
                     <th scope="col">Category_name</th>
+                    <th scope="col">QUANTITY</th>
                     <th scope="col">Function</th>
                 </tr>
             </thead>
@@ -23,6 +24,9 @@
             <tr>
                 <td><?=$category['id']?></td>
                 <td><?=$category['category_name']?></td>
+                <td>
+                    <??>
+                </td>
                 <td class="text-center">
                     <a href="<?php echo $delete ?>"
                         class="py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i

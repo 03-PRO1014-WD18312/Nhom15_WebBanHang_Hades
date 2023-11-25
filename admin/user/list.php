@@ -20,26 +20,28 @@
             </thead>
             <?php
 
-                foreach($listComment as $cmt) {
-                    extract($cmt);
+                foreach($loadUser as $user) {
+                    extract($user);
                     $delete = "index.php?act=delete_comment&id=".$id;
 
                 
             ?>
             <tr>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
-                <td><?=1?></td>
+                <td><?=$id?></td>
+                <td><?=$username?></td>
+                <td><?=$password?></td>
+                <td><?=$ho_ten?></td>
+                <td><img src="" alt=""></td>
+                <td><?=$email?></td>
+                <td><?=$address?></td>
+                <td><?=$tel?></td>
+                <td><?=$role?></td>
                 <td class="text-center">
                     <a href="<?php echo $delete ?>"
-                        class="py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
+                        class="p-1 rounded border border-secondary btn btn-outline-warning"><i
                             class="fa-solid fa fa-trash"></i></a>
+                    <a href="<?php echo $edit ?>" class="p-1 rounded border border-secondary btn btn-outline-warning"><i
+                            class="fa-solid fa fa-pen"></i></a>
                 </td>
             </tr>
             <?php }  ?>
