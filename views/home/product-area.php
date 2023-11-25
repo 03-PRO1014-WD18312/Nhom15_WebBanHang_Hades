@@ -36,7 +36,7 @@
 							<div class="tab-content" id="myTabContent">
 								<!-- Start Single Tab -->
 						<?php for ($i = 0; $i < count($listCate); $i++): ?>
-						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel"> 
+						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
 						<?php $productExitst = true;?>
 							<div class="tab-single">
 								<div class="row">
@@ -95,27 +95,7 @@
 						<div class="col-12">
 						<p>Product not available yet.</p>
 						</div>
-						<?php endif;?>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <h3><a
-                                                        href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$pro['product_name']?></a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span><?=number_format($pro['product_price'])?>VNĐ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endif;?>
-                                    <?php endforeach;?>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endfor;?>
+					<?php endif;?>
 
                         <!--/ End Single Tab -->
                         <!-- Start Single Tab -->
