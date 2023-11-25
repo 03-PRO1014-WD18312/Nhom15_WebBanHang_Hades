@@ -32,7 +32,7 @@
 							<div class="tab-content" id="myTabContent">
 								<!-- Start Single Tab -->
 						<?php for ($i = 0; $i < count($listCate); $i++): ?>
-						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
+						<div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>" id="<?=$listCate[$i]['category_name']?>" role="tabpanel"> 
 						<?php $productExitst = true;?>
 							<div class="tab-single">
 								<div class="row">
