@@ -194,6 +194,8 @@
 	<script src="../js/onepage-nav.min.js"></script>
 	<!-- Easing JS -->
 	<script src="../js/easing.js"></script>
+	<!-- Sweet alert 2-->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- Active JS -->
 	<script src="../js/active.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -295,7 +297,6 @@ success:function(data)
         //         $(this).addClass('star-light');
         //     }
         // });
-
         $('#total_five_star_review').text(data.five_star_review);
 
         $('#total_four_star_review').text(data.four_star_review);
@@ -315,7 +316,7 @@ success:function(data)
             html += '<div class="stars">';
             // Display star ratings
             for (var star = 1; star <= 5; star++) {
-                var class_name = (data.review_data[count].rating >= star) ? 'fa-solid fa-star star-active' : 'far-thin fa-star';
+                var class_name = (data.review_data[count].rating >= star) ? 'fa fa-star star-active' : 'fa fa-star-o';
                 html += '<i class="' + class_name + '"></i>';
             }
             var commentId = data.review_data[count].id; 
@@ -512,7 +513,7 @@ $(".update-button").click(function (e) {
             var newValue = parseInt(inputValue) - parseInt(productQuantity);
             newTotalProduct = parseInt(totalProduct) - newValue;
         } else if (parseInt(inputValue) < parseInt(productQuantity)) {
-            var newValue = parseInt(productQuantity) - parseInt(inputValue);
+            newValue = parseInt(productQuantity) - parseInt(inputValue);
             newTotalProduct = parseInt(totalProduct) + newValue;
         } else {
             newTotalProduct = totalProduct;
@@ -564,7 +565,93 @@ $(".update-button").click(function (e) {
         }
     });
 });
-
+$(".remove-btn").click(function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var id = $this.data("id");
+    var productId = $this.data("productid");
+    var productQty = $this.data("productquantity");
+    var cartQty = parseInt($this.data("cartqty"));
+    var rootQty = parseInt(productQty) + parseInt(cartQty);
+    console.log(productQty,productId,cartQty,rootQty);
+    swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: '../controller/delete.php',
+          method: 'post',
+          data: {remove: id,rootQty:rootQty,id:productId},
+          success: function(response){  
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {
+              location.reload(); // Tải lại trang sau khi xóa thành công
+            });
+          },
+          error: function(xhr, status, error) {
+            console.error("Lỗi khi xóa sản phẩm:", error);
+          }
+        });
+      }
+    });
+  });
+  $(".remove-all").click(function(e) {
+  e.preventDefault();
+  // Mảng chứa thông tin các mục cần xóa
+  var itemsToRemove = [];  
+  $(".productQty").each(function() {
+    var $this = $(this);
+    var cartQty = $this.closest('tr').find('.input-num').val();
+    // Lấy thông tin mỗi mục
+    var item = {
+      id: $this.closest('tr').find('.product_id').val(),  
+      qty: parseInt($this.val()),
+      cartQty: parseInt(cartQty) // thêm cartQty vào
+    }; 
+    // Thêm vào mảng để xóa
+    itemsToRemove.push(item);
+  });
+  console.log(itemsToRemove);
+  // Gọi AJAX
+  swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete all!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        $.ajax({
+          url: '../controller/delete-all.php',
+          method: 'post',
+          data: {items:JSON.stringify(itemsToRemove)},
+          success: function(response){  
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(() => {
+              location.reload(); // Tải lại trang sau khi xóa thành công
+            });
+          },
+          error: function(xhr, status, error) {
+            console.error("Lỗi khi xóa sản phẩm:", error);
+          }
+        });
+      }
+});
+});
 <?php if(isset($_SESSION['success'])):?>
 	alertify.set('notifier','position', 'top-right');
     alertify.success('<p style="color:white;"><?php echo $_SESSION['success']; ?></p>');

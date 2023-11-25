@@ -128,4 +128,12 @@ function countCart(){
     $countCart = $count['count'];
     return $countCart;
 }
+function deleteCart($id){
+    $sql = "DELETE FROM cart WHERE id = '$id'";
+    pdo_execute($sql);
+}
+function deleteAll(){
+    $sql = "DELETE FROM cart";
+    pdo_execute($sql);
+}
 // End cart function
