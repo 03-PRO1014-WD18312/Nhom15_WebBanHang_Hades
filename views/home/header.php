@@ -1,16 +1,13 @@
 <?php
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-// Đếm tổng số lượng sản phẩm
 $totalProducts = totalPro();
 $productsPerPage = 9;
-// Lấy ra số trang của sản phẩm
 $totalPages = ceil($totalProducts / $productsPerPage);
-if ($page < 0) {
+if ($page < 1) {
     $page = $totalPages;
 }else if($page >$totalPages){
 	$page = 1;
 }
-// Lấy ra trang bắt đầu
 $startIndex = ($page - 1) * $productsPerPage;
 $products = loadPagi($startIndex,$productsPerPage);
 if(isset($_GET['search'])){
@@ -122,8 +119,8 @@ $countCart = countCart();
 									<option>mobile</option>
 									<option>kid’s item</option>
 								</select>
-								<form method="get">
-									<input name="search" placeholder="Search Products Here....." type="search">
+								<form method="post" action="../views/indexProduct.php?act=search">
+									<input name="search" placeholder="Search Products Here....." type="search" required>
 									<button class="btnn"><i class="ti-search"></i></button>
 								</form>
 								<div class="search-results">
@@ -150,16 +147,19 @@ $countCart = countCart();
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-									<span><?=$countCart?> Items</span>
+										<span><?=$countCart?> Items</span>
 										<a href="#">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 									<?php foreach($listCart as $cart):?>
 											<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+											<input type="hidden" name="productQty" class="productQty" value="<?=$cart['product_qty']?>" id="">
+											<input type="hidden" name="input-qty" value="<?=$cart['qty']?>">
+											<a style="cursor:pointer;" class="remove remove-btn" data-id="<?=$cart['id']?>" data-productquantity="<?=$cart['product_qty']?>" data-productid="<?=$cart['product_id']?>" data-cartqty="<?=$cart['qty']?>"><i class="fa fa-remove"></i></a>
 											<a class="cart-img" href="#"><img src="../images/<?=$cart['product_image']?>" alt="#"></a>
 											<h4><a href="#"><?=$cart['product_name']?></a></h4>
-											<p class="quantity"><?=$cart['qty']?>x - <span class="amount"><?=number_format($cart['cart_price'])?>VVĐ</span></p>
+											<p class="quantity"><?=$cart['qty']?>x - <span class="amount">    <?=($cart['discount'] == 0) ? number_format($cart['product_price']) : number_format($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100))?>VNĐ
+											</span></p>
 										</li>
 										<?php endforeach;?>
 										<!-- <li>
@@ -171,16 +171,20 @@ $countCart = countCart();
 									</ul>
 									<div class="bottom">
 										<div class="total">
-										 <?php
-                                             $totalAmount =0;
-											 foreach($listCart as $cart){
-												 $totalAmount += $cart['cart_price']*$cart['qty'];
-											 }
-											?>
+										<?php
+										$totalAmount =0;
+										foreach ($listCart as $cart) {
+											if($cart['discount'] ==0){
+												$totalAmount += $cart['product_price'] * $cart['qty'];	
+											}else{
+												$totalAmount += ($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100)) * $cart['qty'];
+											}
+										}
+										?>
 											<span>Total</span>
 											<span class="total-amount"><?=number_format($totalAmount)?>VNĐ</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="../views/indexCheckout.php" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
