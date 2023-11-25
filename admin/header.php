@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
 </head>
 
 <body>
@@ -23,9 +23,8 @@
                     <li class="nav-item "><a class="menu-item" href="index.php?act=product">Product</a></li>
                     <li class="nav-item "><a class="menu-item" href="index.php?act=comment">Comment</a></li>
                     <li class="nav-item "><a class="menu-item" href="index.php?act=order">Order</a></li>
-                    <li class="nav-item "><a class="menu-item" href="index.php?act=User">User</a></li>
+                    <li class="nav-item "><a class="menu-item" href="index.php?act=user">User</a></li>
                 </ul>
             </div>
         </header>
         <div class="container">
-        </div>

@@ -26,19 +26,11 @@
             foreach($listProduct as $product):
                 $edit = "index.php?act=edit_product&id=". $product['product_id'];
                 $delete = "index.php?act=delete_product&id=". $product['product_id'];
-                $imgPart = "../../images/Bottoms/".$product['product_image'];
-                $imgDt1Part = "../../images/Bottoms/".$product['image_dt1'];
-                $imgDt2Part = "../../images/".$product['image_dt2'];
-                $imgDt3Part = "../../images/".$product['image_dt3'];
-                if(is_file($imgPart || $imgDt1Part || $imgDt2Part || $imgDt3Part)){
-                    $productImg = '<img src="'.$imgPart.'" >';
-                    $img = $productImage;
-                    $productImageDt1 = "<img src='".$imgDt1Part."' >";
-                    $productImageDt2 = "<img src='".$imgDt2Part."' >";
-                    $productImageDt3 = "<img src='".$imgDt3Part."' >";
-                    var_dump($productImage);
-
-                }
+                $imgPart = "../images/Bottoms/".$product['product_image'];
+                $imgDt1Part = "../images/Bottoms/".$product['image_dt1'];
+                $imgDt2Part = "../images/Bottoms/".$product['image_dt2'];
+                $imgDt3Part = " ../images/Bottoms/".$product['image_dt3'];
+                
             ?>
             <tr>
                 <td><?=$product['product_id']?></td>
@@ -48,8 +40,8 @@
                 <td><?=$product['discount']?></td>
                 <td><img src="<?=$imgPart?>" alt="" width="30px" height="50px"></td>
                 <td><img src="<?=$imgDt1Part?>" alt="" width="30px" height="50px"></td>
-                <td><?=$productImageDt2?></td>
-                <td><?=$productImageDt3?></td>
+                <td><img src="<?=$imgDt2Part?>" alt="" width="30px" height="50px"></td>
+                <td><img src="<?=$imgDt3Part?>" alt="" width="30px" height="50px"></td>
                 <td><?=$product['category']?></td>
                 <td><?=$product['des']?></td>
                 <td><?=$product['created_at']?></td>
@@ -57,9 +49,9 @@
                 <td class="text-center">
                     <a href="<?php echo $delete ?>"
                         class="p-1 rounded border border-secondary btn btn-outline-warning"><i
-                            class="fa-solid fa-trash"></i></a>
+                            class="fa-solid fa fa-trash"></i></a>
                     <a href="<?php echo $edit ?>" class="p-1 rounded border border-secondary btn btn-outline-warning"><i
-                            class="fa-solid fa-pen "></i></a>
+                            class="fa-solid fa fa-pen"></i></a>
                 </td>
             </tr>
             <?php
@@ -67,7 +59,8 @@
             ?>
 
         </table>
-        <a class="btn btn-primary btn-lg p3" href="index.php?act=add_product" class="">ADD PRODUCT</a>
+        <a class=" btn btn-primary btn-lg p3" href="index.php?act=add_product" class="">ADD PRODUCT</a>
+
 
     </div>
 </div>
