@@ -45,7 +45,6 @@
                                     <?php $productExitst = false;?>
                                     <?php foreach ($listPro as $pro): ?>
                                     <?php if ($pro['category'] == $listCate[$i]['id']): ?>
-                                    <?php $productExitst = true;?>
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                         <div class="single-product">
                                             <div class="product-img">
@@ -110,7 +109,6 @@
                             <p>Product not available yet.</p>
                         </div>
                         <?php endif;?>
-
                         <!--/ End Single Tab -->
                         <!-- Start Single Tab -->
                         <!-- <div class="tab-pane fade" id="Bottoms" role="tabpanel">
