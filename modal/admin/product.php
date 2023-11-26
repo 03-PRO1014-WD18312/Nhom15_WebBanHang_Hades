@@ -65,4 +65,12 @@
         $sql = "DELETE FROM `product` WHERE `product`.`category`=".$id;
         pdo_execute($sql);
     }
+    function loadAllProForCate ($id){
+        $sql = "SELECT * FROM `product` WHERE `product`.`category`=".$id; 
+        // $sql .=" DESC LIMIT 10";
+        $listPro = pdo_query($sql);
+        return $listPro;
+        var_dump($listPro);
+
+    }
 ?>
