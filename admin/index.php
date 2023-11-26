@@ -257,7 +257,17 @@
             case "edit_user":
                 $loadUser = loadAllAccount ();
                 include "user/list.php";
-                break;                 
+                break;
+            case "category_filter":
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    // echo "<pre>";
+                    // print_r($listPro);
+                    // echo "</pre>";
+                }
+                $listProduct = loadAllProForCate ($id);
+                include "product/list.php";
+                break;                  
         }
     }
 
