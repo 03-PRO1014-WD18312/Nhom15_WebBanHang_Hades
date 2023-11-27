@@ -28,6 +28,14 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
             }
             include '../views/account-detail/account-info.php';
         break;
+        case 'billing':
+        $listOrders = showHistoryOrders($_SESSION['username']);
+        include "../views/account-detail/account-billing.php";
+        break;
+        case 'billDetail':
+        $listDetails = showOrderDetails(urldecode($_GET['orderId']) );
+        include "../views/account-detail/billing-detail.php";
+        break;
         default: 
         include '../views/account-detail/account-info.php';
         break;

@@ -66,19 +66,19 @@ Version:1.0
 		/*=======================
 		  Slider Range JS
 		=========================*/ 
-		$( function() {
-			$( "#slider-range" ).slider({
-			  range: true,
-			  min: 0,
-			  max: 500,
-			  values: [ 120, 250 ],
-			  slide: function( event, ui ) {
-				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			  }
-			});
-			$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-		} );
+		// $( function() {
+		// 	$( "#slider-range" ).slider({
+		// 	  range: true,
+		// 	  min: 0,
+		// 	  max: 700000,
+		// 	  values: [ 100000, 700000 ],
+		// 	  slide: function( event, ui ) {
+		// 		$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+		// 	  }
+		// 	});
+		// 	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+		// 	  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		// } );
 		
 		/*=======================
 		  Home Slider JS
@@ -297,19 +297,19 @@ Version:1.0
 	/*=====================================
 	 Others JS
 	======================================*/ 	
-	$( function() {
-		$( "#slider-range" ).slider({
-			range: true,
-			min: 0,
-			max: 500,
-			values: [ 0, 500 ],
-			slide: function( event, ui ) {
-				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			}
-		});
-		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-		  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-	} );
+	// $( function() {
+	// 	$( "#slider-range" ).slider({
+	// 		range: true,
+	// 		min: 0,
+	// 		max: 500,
+	// 		values: [ 0, 500 ],
+	// 		slide: function( event, ui ) {
+	// 			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+	// 		}
+	// 	});
+	// 	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+	// 	  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+	// } );
 	
 	/*=====================================
 	  Preloader JS
