@@ -47,7 +47,7 @@
     </div>
     <div class="row2 form_content pt-4">
         <table class="table table-boder table-striped-columns table-bordered ">
-            <thead class="table-light">
+            <thead class="">
                 <tr class="">
                     <th scope="col">ID</th>
                     <th scope="col">USER NAME</th>

@@ -4,7 +4,7 @@
     </div>
     <div class="row2 form_content pt-4">
         <table class="table table-boder table-striped-columns table-bordered ">
-            <thead class="table-light">
+            <thead class="">
                 <tr class="">
                     <th scope="col">ID</th>
                     <th scope="col">Category_name</th>
@@ -51,9 +51,11 @@
             </li>
         </ul>
     </nav>
+    <input type="hidden" id="delete_value" name="delete_value" value="">
 </div>
 <script>
 function check() {
-    alert("Bạn có muốn xóa Danh mục");
+    confirm("Bạn có muốn xóa Danh mục");
+
 }
 </script>

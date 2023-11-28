@@ -1,26 +1,19 @@
 <?php 
-    include_once("header.php");
-    include_once("../modal/pdo.php");
+     include_once("../modal/pdo.php");
     include_once("../modal/catecory.php");
     include_once("../modal/admin/account.php");
+    include_once("../modal/admin/comment.php");
     include_once("../modal/admin/product.php");
     include_once("../modal/admin/comment.php");
     include_once("../modal/admin/global.php");
-    $records_per_page = 10;
-    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $start_from = ($current_page - 1) * $records_per_page;
+    
     $error = [];
     
     $listCategory = loadAll_Category ();
     $listProduct=loadAll_Product();
     $pattern = "/[0-9]/ ";
-    
-    // if(isset($listCategory)){
-    //     for($i=0;$i<=count($id);$i++){
-    //         echo $i;
-    //     }
-    //     // if($listCategory['id'])
-    // }
+    include_once("header.php");
+  
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -40,7 +33,7 @@
                         $error[] = "Tên chỉ chứa ký tự chữ.";
                     }
                     else{
-                    insert_category($category_name);
+                    insert_category($categoryName);
                     $check = "ADDED SUCCESSFULLY";
                     }
                 }
@@ -50,11 +43,11 @@
             case "delete_category": 
                 if(isset($_GET['id'])&&($_GET['id']>0)){
                     $id = $_GET['id'];
-
                     deleteCategory_from_product ($id);
-                    // deleteCategory($id);
+                    deleteCategory($id);
 
                 }
+                
                 $listCategory = loadAll_Category ();
                 include "category/list.php";                
                 break;  
@@ -86,8 +79,9 @@
                 include "category/update.php";                
                 break;              
             case "product":
-                if(isset($_POST['btnUpdate']) && ($_POST['btnUpdate'])){
-                }
+                // if(isset($_POST['btnUpdate']) && ($_POST['btnUpdate'])){
+                // }
+                $categoryFilter =1;
                 $listProduct = loadAll_Product ();
                 include "product/list.php";
                 break;
@@ -216,9 +210,9 @@
                     } else if(!validate_numeric_length($productPrice)){
                         $error['productPrice'] = "Giá hợp lệ chỉ chứa ký tự số và có độ dài lớn hơn 4 ký tự";
                     }
-                    // if(empty($disCount)){
-                    //     $error['discount'] = "Yêu cầu nhập vào giá sản phẩm";
-                    // }
+                    if(($disCount>100)){
+                        $error['discount'] = "Giảm giá dưới 100%    ";
+                    }
                     if(empty($productQty)){
                         $error['productQty'] = "Yêu cầu nhập vào số lượng sản phẩm";
                     }
@@ -239,7 +233,7 @@
                 include "product/update.php";                
                 break;    
             case "comment":
-                
+                $loadAllCmt = loadAllCmt (); 
                 include "comment/list.php";
                 break;
             case "user":
@@ -255,12 +249,29 @@
                 include "user/list.php";
                 break;  
             case "edit_user":
-                $loadUser = loadAllAccount ();
-                include "user/list.php";
+                if(isset($_GET['id'])){
+                    $id = $_GET['id'];
+                    $loadUser = loadOneAccount ($id);
+
+                }
+                include "user/role.php";
+                break;
+            case "role":
+                if(isset($_POST['btnRole'])){
+                    $id = $_POST['id'];
+                    $role1 = $_POST['role'];
+                    if($role1!=""){
+                        $check = "UPDATE SUCCESS";
+                    }
+                }
+                updateRole ($id,$role1);
+                $loadUser = loadOneAccount ($id);
+                include "user/role.php";    
                 break;
             case "category_filter":
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
+                    $categoryFilter=0;
                     // echo "<pre>";
                     // print_r($listPro);
                     // echo "</pre>";
