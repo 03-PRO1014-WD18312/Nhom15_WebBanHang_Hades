@@ -44,6 +44,26 @@ function pdo_query_column($sql) {
         unset($conn);
     }
 }
+// Last insertID
+function pdo_execute_1($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        
+        // Lấy ID của dòng vừa thêm vào
+        $lastInsertId = $conn->lastInsertId();
+
+        // Đóng kết nối
+        unset($conn);
+
+        return $lastInsertId;
+    } catch (PDOException $e) {
+        // Xử lý lỗi hoặc ném lại ngoại lệ
+        throw $e;
+    }
+}
 // truy vấn nhiều dữ liệu
 // select all
 function pdo_query($sql){

@@ -99,10 +99,10 @@ $countCart = countCart();
 							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form class="search-form">
+							<form class="search-form">
 									<input type="text" placeholder="Search here...">
 									<button value="search" type="submit"><i class="ti-search"></i></button>
-								</form>
+							</form>
 						</div>
 							<!--/ End Search Form -->
 							
@@ -113,12 +113,12 @@ $countCart = countCart();
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select>
+								<!-- <select>
 									<option selected="selected">All Category</option>
 									<option>watch</option>
 									<option>mobile</option>
 									<option>kid’s item</option>
-								</select>
+								</select> -->
 								<form method="post" action="../views/indexProduct.php?act=search">
 									<input name="search" placeholder="Search Products Here....." type="search" required>
 									<button class="btnn"><i class="ti-search"></i></button>
@@ -184,7 +184,11 @@ $countCart = countCart();
 											<span>Total</span>
 											<span class="total-amount"><?=number_format($totalAmount)?>VNĐ</span>
 										</div>
+										<?php if(empty($listCart)):?>
+											<a href="../views/index.php" class="btn animate">Shop now</a>
+										<?php else:?>
 										<a href="../views/indexCheckout.php" class="btn animate">Checkout</a>
+										<?php endif;?>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

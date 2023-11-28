@@ -15,6 +15,13 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
         $loadProInCate = loadCate($cateId);
         include '../views/product/proInCate.php';
         break;
+        case 'search':
+       if(isset($_POST['search'])){
+        $search = $_POST['search'];
+        $searchResults = searchProduct($search);
+       }
+        include '../views/product/search.php';
+        break;
         default: 
         include '../views/product/shop-grid.php';
         break;
