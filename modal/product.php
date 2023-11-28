@@ -33,7 +33,7 @@ function loadPagi($startIndex,$productsPerpage){
 }
 function totalPro(){
     $sql = "select count(*) from product";
-    $totalPro =pdo_query_column($sql);
+    $totalPro = pdo_query_column($sql);
     return $totalPro;
 }
 function loadCate($id){
