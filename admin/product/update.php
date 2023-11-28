@@ -15,11 +15,6 @@
 <?php }
 ?>
 <div class="container">
-    <?php if(isset($check)){
-                    ?>
-    <?php    
-        } 
-        ?>
 
     <form action="index.php?act=update_product" method="POST" enctype="multipart/form-data">
         <label for="">Tên Sản Phẩm</label>
@@ -36,6 +31,9 @@
         </p>
         <label for="">Giảm giá</label>
         <input type="text" class="input-group form-control form-control-sm" name="discount" value="<?=$discount?>">
+        <p class="font-italic text-danger">
+            <?=(isset($error['discount'])) ? $error["discount"]:false;?>
+        </p>
         <label for="">Số lượng</label>
         <input type="text" class="input-group form-control form-control-sm" name="productQty" value="<?=$product_qty?>">
         <p class="font-italic text-danger">

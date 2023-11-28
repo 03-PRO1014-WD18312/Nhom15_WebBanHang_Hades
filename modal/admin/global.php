@@ -8,9 +8,9 @@ function validate_numeric_length($string) {
     }
 }
 function validate_positive_numeric($string) {
-    if (is_numeric($string) && $string > 0) {
-        return true;
-    } else {
+        if (is_numeric($string) && $string > 0) {
+            return true;
+        } else {
         return false;
     }
 }

@@ -3,8 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.body {
-}
+
 .mb16 {
   margin-bottom: 16px;
 }
@@ -25,5 +24,10 @@ header .nav-item {
 .banner {
   width: 100%;
 }
-header .menu-item {
+.container .form-role {
+  width: 100%;
+}
+.container .my_select {
+  width: 100%;
+  /* display: inline-block; */
 }

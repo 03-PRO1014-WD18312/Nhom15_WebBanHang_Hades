@@ -27,7 +27,7 @@
         </div>
         <div class="row2 form_content pt-4">
             <table class="table table-boder table-striped-columns table-bordered  ">
-                <thead class="table-light">
+                <thead class="">
                     <tr class="">
                         <th scope="col">Product Id</th>
                         <th scope="col">Product name</th>
@@ -46,6 +46,37 @@
                     </tr>
                 </thead>
                 <?php
+                                                $sql = "SELECT COUNT(*) AS `total` FROM `product`";
+                                                $row = pdo_query($sql);
+                                                // echo $row;
+                                                // echo "<pre>";
+                                                // print_r($row['0']['total']);
+                                                //  echo "</pre>";
+                                                $totalItems = $row['0']['total']; // Tổng số mục
+                                                // echo $totalItems;
+                                                $itemsPerPage = 10; // Số lượng mục trên mỗi trang
+                                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Trang hiện tại
+                                                $limit = 10;
+                                                $totalPage = ceil($totalItems / $limit);
+                                                // Giới hạn current_page trong khoảng 1 đến total_page
+                                                if ($currentPage > $totalPage){
+                                                    $currentPage = $totalPage;
+                                                }
+                                                else if ($currentPage < 1){
+                                                    $currentPage = 1;
+                                                }
+                                                // Tìm Start
+                                                $start = ($currentPage - 1) * $limit;
+                                                // Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
+                                                if(($categoryFilter == 1)){
+
+                                                    $sql1 = "SELECT * FROM `product` LIMIT $start, $limit";
+                                                    $listProduct = pdo_query($sql1);
+                                                }
+
+
+
+
             foreach($listProduct as $product):
                 $edit = "index.php?act=edit_product&id=". $product['product_id'];
                 $delete = "index.php?act=delete_product&id=". $product['product_id'];
@@ -88,17 +119,44 @@
 
 
         </div>
+
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                <?php
+
+if(($categoryFilter == 1)){
+                    // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                    if ($currentPage > 1 && $totalPage > 1){
+                        // echo '<a href="index.php?page='.($current_page-1).'">Prev</a> | ';
+                        echo '<li class="page-item disabled">
+                            <a href="index.php?page='.($currentPage-1).'" class="page-link">Previous</a>
+                            </li>';
+                    }
+
+                    // Lặp khoảng giữa
+                    for ($i = 1; $i <= $totalPage; $i++){
+                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                        // ngược lại hiển thị thẻ a
+                        if ($i == $currentPage){
+                            // echo '<span>'.$i.'</span>  ';
+                            echo '<li class="page-item"><a class="page-link" href="#">'.$i.'</a></li>';
+                        }
+                        else{
+                            // echo '<a href="index.php?page='.$i.'">'.$i.'</a> | ';
+                            echo '<li class="page-item"><a class="page-link" href="index.php?act=product&&page='.$i.'">'.$i.'</a></li>';
+                        }
+                    }
+
+                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                    if ($currentPage < $totalPage && $totalPage > 1){
+                        // echo '<a href="index.php?page='.($currentPage+1).'">Next</a> | ';    
+                        echo '<li class="page-item">
+                            <a class="page-link" href="index.php?act=product&page='.($currentPage+1).'">Next</a>
+                            </li>';
+                    }}
+                ?>
             </ul>
         </nav>
     </div>
+
+</div>

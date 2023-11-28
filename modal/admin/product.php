@@ -1,6 +1,7 @@
 <?php 
     function loadAll_Product (){
-        $sql = "SELECT * FROM `product` ORDER BY `product_id` DESC LIMIT 10";
+        
+        $sql = "SELECT * FROM `product` ORDER BY `product_id` DESC ";
         $listCategory = pdo_query($sql);
         return $listCategory;
     }
@@ -70,7 +71,17 @@
         // $sql .=" DESC LIMIT 10";
         $listPro = pdo_query($sql);
         return $listPro;
-        var_dump($listPro);
+        // var_dump($listPro);
 
+    }
+    function loadPagi($startIndex,$productsPerpage){
+        $sql ="SELECT * FROM product LIMIT $startIndex, $productsPerpage";
+        $products = pdo_query($sql);
+        return $products;
+    }
+    function totalPro(){
+        $sql = "select count(*) from product";
+        $totalPro =pdo_query_column($sql);
+        return $totalPro;
     }
 ?>
