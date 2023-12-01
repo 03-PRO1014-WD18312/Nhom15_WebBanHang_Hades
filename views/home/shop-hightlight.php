@@ -28,7 +28,7 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h4 class="title"><a href="../views/indexProdetail.php?id=<?=$list['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$list['product_name']?></a></h4>
+									<h4 class="title"><a href="../views/indexProdetail.php?id=<?=$list['product_id']?>&act=loadOne"><?=$list['product_name']?></a></h4>
 									<p class="price with-discount"><?=number_format($list['product_price'])?>VNĐ</p>
 								</div>
 							</div>

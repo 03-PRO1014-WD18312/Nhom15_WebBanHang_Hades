@@ -195,7 +195,7 @@
 									<div class="box_total">
 										<h5>Overall</h5>
 										<h4 id="average_rating">0.0</h4>
-										<h6>(<span id="total_review"></span>) Reviews</h6>
+										<h6>(<span id="total_review"></span>)Reviews</h6>
 									</div>
 								</div>
 								<div class="col-6">

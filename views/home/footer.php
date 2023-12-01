@@ -373,10 +373,12 @@ function load_rating_data() {
                     html += '<p class="review-timestamp">' + data.review_data[count].datetime + '</p>';
                     if (username === data.review_data[count].username) {
                         html +=
-                            '<a onclick="return confirm(\'Bạn có muốn xóa bình luận này không?\');" href="index.php?id=' +
-                            commentId + '&id_product=' + productId +
-                            '&act=del_bl" class="delete-review" data-index="' + count + '" >Delete</a>';
-                    } else {
+                        '<a onclick="return confirm(\'Are you sure to delete?\');" href="indexProdetail.php?id=' +
+                        commentId  +
+                        '&product_id=' + product_id +
+                        '&act=del_rate" class="delete-review" data-index="' + count + '" >Delete</a>';
+
+                    }else{
                         console.log(user_id);
                         console.log(data.review_data[count].user_id)
                         console.log('User IDs do not match. Not adding delete button.');
@@ -756,11 +758,11 @@ $(".remove-all").click(function(e) {
         }
     });
 });
-$(".order").click(function(e) {
-    //   e.preventDefault(); // Ngăn chặn hành vi mặc định của nút
-    location.reload(); // Làm mới trang
-    alert('Order successful'); // Thêm thông báo Alert
-});
+// $(".order").click(function(e) {
+//     //   e.preventDefault(); // Ngăn chặn hành vi mặc định của nút
+//     location.reload(); // Làm mới trang
+//     alert('Order successful'); // Thêm thông báo Alert
+// });
 
 <?php if(isset($_SESSION['success'])):?>
 alertify.set('notifier', 'position', 'top-right');

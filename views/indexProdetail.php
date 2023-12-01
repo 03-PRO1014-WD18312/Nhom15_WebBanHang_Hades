@@ -10,7 +10,7 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
         case 'loadOne':
            if(isset($_GET['id']) && $_GET['id'] >0 && is_numeric($_GET['id'])&&$_GET['id'] !== ""){
             $proOne = loadOneProduct($_GET['id']);
-            $cateName = $_GET['name'];
+            // $cateName = $_GET['name'];
             if($proOne){
                 include "../views/product-detail/product-detail.php";
             }else{
@@ -20,6 +20,20 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
             echo "<h1>Product Detail fail to load</h1>";
            }
            
+        break;
+        case 'del_rate':
+        del_rate($_GET['id']);
+        if(isset($_GET['product_id']) && $_GET['product_id'] >0 && is_numeric($_GET['product_id'])&&$_GET['product_id'] !== ""){
+            $proOne = loadOneProduct($_GET['product_id']);
+            // $cateName = $_GET['name'];
+            if($proOne){
+                include "../views/product-detail/product-detail.php";
+            }else{
+                echo "<h1>ID not found</h1>";
+            }
+           }else{
+            echo "<h1>Product Detail fail to load</h1>";
+           }
         break;
         default: 
         include "../views/product-detail/product-detail.php";

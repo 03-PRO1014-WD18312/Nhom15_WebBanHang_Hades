@@ -169,3 +169,8 @@ function order($fullName, $email, $phoneNumber, $address) {
             pdo_execute($sqlOrderDetail); 
         }
 }
+function del_rate($id){
+    $sql = "DELETE FROM review_table WHERE review_id ='$id'";
+    pdo_execute($sql);
+
+}

@@ -198,7 +198,8 @@
                         <!--/ End Shop Top -->
                     </div>
                 </div>
-                <div class="row">
+				<div id="searchResult">
+				<div class="row">
                     <?php for ($i = 0; $i < count($listCate); $i++): ?>
                     <?php if(empty($searchResults)):?>
                     <h2 style="text-align:center;">Product not found</h2>
@@ -210,7 +211,7 @@
                         <div class="single-product">
                             <div class="product-img">
                                 <a
-                                    href="./views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
+                                    href="./views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne">
                                     <img class="default-img" src="../images/<?=$pro['product_image']?>" alt="#">
                                     <img class="hover-img" src="../images/<?=$pro['image_dt1']?>" alt="#">
                                 </a>
@@ -239,7 +240,7 @@
                             </div>
                             <div class="product-content">
                                 <h3><a
-                                        href="./indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$pro['product_name']?></a>
+                                        href="./indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne"><?=$pro['product_name']?></a>
                                 </h3>
                                 <div class="product-price">
                                     <?php if($pro['discount'] >0):?>
@@ -470,6 +471,8 @@
 								</div>
 							</div> -->
                 </div>
+				</div>
+                
             </div>
         </div>
     </div>

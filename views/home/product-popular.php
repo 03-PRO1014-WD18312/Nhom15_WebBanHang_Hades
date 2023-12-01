@@ -42,7 +42,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$pro['product_name']?></a></h3>
+								<h3><a href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne"><?=$pro['product_name']?></a></h3>
 								<div class="product-price">
 									<span class="old"><?=number_format($pro['product_price'])?>VNĐ</span>
 									<span><?=number_format($pro['product_price'] - ($pro['product_price'] * $pro['discount']/100))?>VNĐ</span>

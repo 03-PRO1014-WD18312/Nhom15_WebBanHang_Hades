@@ -83,7 +83,7 @@
                             </div>
                             <div class="content">
                                 <h5><a
-                                        href="./indexProdetail.php?id=<?=$list['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>"><?=$list['product_name']?></a>
+                                        href="./indexProdetail.php?id=<?=$list['product_id']?>&act=loadOne"><?=$list['product_name']?></a>
                                 </h5>
                                 <p class="price"><?=number_format($list['product_price'])?>VNĐ</p>
                                 <ul class="reviews">
@@ -207,7 +207,7 @@
                         <div class="single-product">
                             <div class="product-img">
                                 <a
-                                    href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
+                                    href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne">
                                     <img class="default-img" src="../images/<?=$pro['product_image']?>" alt="#">
                                     <img class="hover-img" src="../images/<?=$pro['image_dt1']?>" alt="#">
                                 </a>
@@ -236,7 +236,7 @@
                             </div>
                             <div class="product-content">
                                 <h3><a
-                                        href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
+                                        href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne">
                                         <?=$pro['product_name']?></a>
                                 </h3>
                                 <div class="product-price">

@@ -84,7 +84,7 @@
                                             </div>
                                             <div class="product-content">
                                                 <h3><a
-                                                        href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne&name=<?=$listCate[$i]['category_name']?>">
+                                                        href="../views/indexProdetail.php?id=<?=$pro['product_id']?>&act=loadOne">
                                                         <?=$pro['product_name']?></a></h3>
                                                 <div class="product-price">
                                                     <?php if($pro['discount'] >0):?>

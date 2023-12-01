@@ -36,7 +36,7 @@
         <!-- card right -->
         <div class="product-content">
             <h2 style="margin-bottom:30px;" class="product-title"><?=$proOne['product_name']?></h2>
-            <a style="display:inline;" href="#" class="btn-grad"><?=$cateName?></a>
+            <a style="display:inline;" href="#" class="btn-grad"><?=$proOne['category_name']?></a>
             <!-- <div style="margin-top:30px;" class="product-rating">
                 <i class="yellow fa fa-star"></i>
                 <i class="yellow fa fa-star"></i>
