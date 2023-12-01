@@ -5,7 +5,7 @@
                 <div class="bread-inner">
                     <ul class="bread-list">
                         <li><a href="../views/index.php">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="../views/indexAccount.php">Account information</a></li>
+                        <li class="active"><a href="../views/indexAccount.php?act=billing">Billing</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,13 +28,15 @@
         </div>
         <div class="card-body p-0">
             <!-- Billing history table-->
-            <div class="table-responsive table-billing-history">
+            <div style="font-size: 12px;" class="table-responsive table-billing-history">
                 <table class="table mb-0">
                     <thead>
                         <tr>
                             <th class="border-gray-200" scope="col">Transaction ID</th>
-                            <th class="border-gray-200" scope="col"> Order Date</th>
+                            <th class="border-gray-200" scope="col">Order Date</th>
                             <th class="border-gray-200" scope="col">Amount</th>
+                            <th class="border-gray-200" scope="col">Deli status</th>
+                            <th class="border-gray-200" scope="col">Status</th>
                             <th class="border-gray-200" scope="col">Payment</th>
                             <th class="border-gray-200" scope="col">View details</th>
                         </tr>
@@ -46,7 +48,19 @@
                             <td><?=$order['order_id']?></td>
                             <td><?=$order['order_date']?></td>
                             <td><?=number_format($order['total_amount'])?>VNĐ</td>
-                            <td><span class="badge bg-light text-dark"><?=$order['payment_method']?></span></td>
+                            <?php if($order['deli_status'] == "Processing"){?>
+                            <td style="color:yellow;"><?=$order['deli_status']?></td>
+                            <?php }else if($order['deli_status'] == "Delivering"){?>
+                            <td style="color:yellow;"><?=$order['deli_status']?></td>
+                            <?php } else { ?>
+                                <td style="color:green;"><?=$order['deli_status']?></td>
+                            <?php } ?>
+                            <?php if($order['deli_status'] == "Delivered"){?>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <?php } else{ ?>
+                            <td><span class="badge bg-light text-dark">Pending</span></td>
+                            <?php } ?>
+                            <td><?=$order['payment_method']?></td>
                             <td><a
                                     href="../views/indexAccount.php?act=billDetail&orderId=<?=urlencode($order['order_id'])?>">View
                                     details</a></td>

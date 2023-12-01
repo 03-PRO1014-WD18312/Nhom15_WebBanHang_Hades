@@ -11,16 +11,16 @@ $pro_detail = loadPopupPro($productId);
             <div class="product-gallery">
                 <div class="quickview-slider-active">
                     <div class="single-slider">
-                        <img src="../images/<?=$pr['category_name']?>/<?=$pr['product_image']?>" style="width:550px;height:505px" alt="#">
+                        <img src="../images/<?=$pr['product_image']?>" style="width:550px;height:505px" alt="#">
                     </div>
                     <div class="single-slider">
-                        <img src="../images/<?=$pr['category_name']?>/<?=$pr['image_dt1']?>" style="width:550px;height:505px" alt="#">
+                        <img src="../images/<?=$pr['image_dt1']?>" style="width:550px;height:505px" alt="#">
                     </div>
                     <div class="single-slider">
-                        <img src="../images/<?=$pr['category_name']?>/<?=$pr['image_dt2']?>" style="width:550px;height:505px" alt="#">
+                        <img src="../images/<?=$pr['image_dt2']?>" style="width:550px;height:505px" alt="#">
                     </div>
                     <div class="single-slider">
-                        <img src="../images/<?=$pr['category_name']?>/<?=$pr['image_dt3']?>" style="width:550px;height:505px" alt="#">
+                        <img src="../images/<?=$pr['image_dt3']?>" style="width:550px;height:505px" alt="#">
                     </div>
                 </div>
             </div>

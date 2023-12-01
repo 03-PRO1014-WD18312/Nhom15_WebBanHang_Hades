@@ -13,13 +13,12 @@ function showHistoryOrders($username){
             FROM orders
             JOIN customer ON orders.customer_id = customer.customer_id
             WHERE customer.customer_name = '$username'";
-    $listOrders = pdo_query($sql);
-    return $listOrders;
+            $listOrders = pdo_query($sql);
+            return $listOrders;
 }
 function showOrderDetails($orderId) {
     $sql = "SELECT * FROM order_detail 
             JOIN orders ON order_detail.order_id = orders.order_id
-            JOIN product ON order_detail.product_id = product.product_id
             WHERE order_detail.order_id = '$orderId'";
     $listDetails = pdo_query($sql);  
     return $listDetails;

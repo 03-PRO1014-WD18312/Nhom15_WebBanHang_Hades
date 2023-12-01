@@ -13,10 +13,9 @@
             <?php 
                 foreach($loadUser as $user):
                     if($user['role']==0){
-                        ?>
+                    ?>
             <option value="0" selected>Người dùng</option>
             <option value="1">Admin</option>
-
             <?php
                     }
                     if($user['role']==1){
@@ -30,8 +29,6 @@
             <?php endforeach;?>
         </select>
         <button type="submit" name="btnRole" class="ml-1 col-2 btn btn-primary btn-lg">Phân quyền</button>
-
-
     </form>
 
 

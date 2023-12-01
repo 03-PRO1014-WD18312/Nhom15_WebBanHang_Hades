@@ -557,6 +557,40 @@ $(".buy-button").click(function(e) {
         }
     });
 });
+// Buy now
+$(".buyNow").click(function(e) {
+    e.preventDefault();
+    var productId = $(this).data('product-id');
+    var productName = $(this).data('product-name');
+    var productImage = $(this).data('product-image');
+    var productQty = $(this).data('product-qty');
+    var numberPro = 1;
+    var productPrice = $(this).data('product-price');
+    console.log(productId, productName, productImage, productQty, productPrice, numberPro);
+    $.ajax({
+        url: '../controller/addtocart.php',
+        method: 'POST',
+        data: {
+            productId: productId,
+            productName: productName,
+            productImage: productImage,
+            productQty: productQty,
+            numberPro: numberPro,
+            productPrice: productPrice
+        },
+        success: function(response) {
+            // Xử lý dữ liệu nhận được từ server ở đây
+            // alert("Product added successfully");
+            // location.reload();
+            window.location.href = '../views/indexCheckout.php';
+            console.log(response);
+            // Thực hiện các thao tác khác tùy thuộc vào dữ liệu nhận được
+        },
+        error: function(error) {
+            console.error('Error:', error);
+        }
+    });
+});
 $(".update-button").click(function(e) {
     e.preventDefault();
     var cartItems = [];

@@ -6,7 +6,7 @@
 					<div class="bread-inner">
 						<ul class="bread-list">
 							<li><a href="../views/index.php">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="../views/indexAccount.php">Account information</a></li>
+							<li class="active"><a href="../views/indexAccount.php?act=billDetail&orderId=<?=urlencode($order['order_id'])?>">Billing detail</a></li>
 						</ul>
 					</div>
 				</div>
@@ -52,8 +52,18 @@
                             <td><?=number_format($order['price'])?>VNĐ</td>
                             <td><?=$order['order_date']?></td>
                             <td><?=number_format($order['price'] * $order['quantity'])?>VNĐ</td>
+                            <?php if($order['deli_status'] == "Processing"){?>
                             <td style="color:yellow;"><?=$order['deli_status']?></td>
-                            <td><span class="badge bg-light text-dark"><?=$order['status']?></span></td>
+                            <?php }else if($order['deli_status'] == "Delivering"){?>
+                            <td style="color:yellow;"><?=$order['deli_status']?></td>
+                            <?php } else { ?>
+                                <td style="color:green;"><?=$order['deli_status']?></td>
+                            <?php } ?>
+                            <?php if($order['deli_status'] == "Delivered"){?>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <?php } else{ ?>
+                            <td><span class="badge bg-light text-dark">Pending<span></td>
+                            <?php } ?>
                             <td><?=$order['payment_method']?></td>
                             </tr>
                         <?php endforeach;?>

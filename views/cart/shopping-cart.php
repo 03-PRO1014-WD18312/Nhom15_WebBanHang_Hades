@@ -30,7 +30,7 @@
                             <th class="text-center">QUANTITY</th>
                             <th class="text-center">TOTAL</th>
                             <th class="text-center"><i style="cursor:pointer;"
-                                    class="ti-trash remove-icon remove-all"></i></th>
+                                class="ti-trash remove-icon remove-all"></i></th>
                     </thead>
                     <tbody>
                         <?php if(empty($listCart)):?>
@@ -144,7 +144,7 @@
             <div class="col-12">
                 <!-- Total Amount -->
                 <?php if(empty($listCart)):?>
-                <a href="../views/index.php" class="btn">Continue shopping</a>
+                <a style="color:white;" href="../views/index.php" class="btn">Continue shopping</a>
                 <?php else:?>
                 <div class="total-amount">
                     <div class="row">

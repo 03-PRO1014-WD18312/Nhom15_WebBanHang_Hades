@@ -145,17 +145,17 @@ function order($fullName, $email, $phoneNumber, $address) {
     $cusId = pdo_execute_1($sqlCus);  // Thay thế pdo_execute_1 bằng hàm thực hiện truy vấn thích hợp
     // Thêm thông tin đơn hàng
     $orderDate = date('Y-m-d'); // Ngày hiện tại
-    $status = 'Pending'; // Trạng thái mặc định
+    // $status = 'Pending'; // Trạng thái mặc định
     $payMethod = 'COD';
     $totalAmount = $_POST['total-amount'];
     $orderId = '#PRO' . substr(uniqid(), -3);
     $deli_status = "Processing";
-    $sqlOrder = "INSERT INTO orders (order_id, customer_id, order_date, total_amount, payment_method) 
-    VALUES ('$orderId', '$cusId', '$orderDate', '$totalAmount', '$payMethod')";
+    $sqlOrder = "INSERT INTO orders (order_id, customer_id, order_date, total_amount,deli_status,status, payment_method) 
+    VALUES ('$orderId', '$cusId', '$orderDate', '$totalAmount','$deli_status', '$payMethod')";
     pdo_execute($sqlOrder);  
         $listCart = loadCart();
         foreach ($listCart as $cart) {
-            $productId = $cart['product_id'];
+            $productName = $cart['product_name'];
             $quantity = $cart['qty'];
             if($cart['discount'] ==0){
                 $price = $cart['product_price']; 
@@ -164,8 +164,8 @@ function order($fullName, $email, $phoneNumber, $address) {
                 $discount = ($discountPercentage / 100) * $cart['product_price'];
                 $price = $cart['product_price'] - $discount;
             }
-            $sqlOrderDetail = "INSERT INTO order_detail (order_id,quantity, price,deli_status,status,product_id) 
-            VALUES ('$orderId', '$quantity', '$price','$deli_status','$status', '$productId')";
+            $sqlOrderDetail = "INSERT INTO order_detail (order_id,quantity, price,product_name) 
+            VALUES ('$orderId', '$quantity', '$price', '$productName')";
             pdo_execute($sqlOrderDetail); 
         }
 }

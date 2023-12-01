@@ -52,7 +52,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">USER NAME</th>
                     <th scope="col">PASSWORD</th>
-                    <th scope="col">FIRST AND LAST NAMET</th>
+                    <th scope="col">FULLNAME</th>
                     <th scope="col">IMAGE</th>
                     <th scope="col">EMAIL</th>
                     <th scope="col">ADDRESS</th>
@@ -62,25 +62,23 @@
                 </tr>
             </thead>
             <?php
-
-                foreach($loadUser as $user) {
-                    extract($user);
-                    $delete = "index.php?act=delete_user&id=".$id;
-                    $edit = "index.php?act=edit_user&id=".$id;
-
-                
+            foreach($loadUser as $user) {
+            extract($user);
+            $delete = "index.php?act=delete_user&id=".$id;
+            $edit = "index.php?act=edit_user&id=".$id;         
             ?>
             <tr>
                 <td><?=$id?></td>
                 <td><?=$username?></td>
                 <td><?=$password?></td>
                 <td><?=$ho_ten?></td>
-                <td><img src="" alt=""></td>
+                <td><img style="width: 50px; height:50px;" src="../upload/<?=$image?>" alt=""></td>
                 <td><?=$email?></td>
                 <td><?=$address?></td>
                 <td><?=$tel?></td>
                 <td><?=$role?></td>
-                <td class="text-center">
+                <?php if($role == 0){ ?>
+                     <td class="text-center">
                     <a href="<?php echo $delete ?>"
                         class="p-1 rounded border border-secondary btn btn-outline-warning"><i
                             class="fa-solid fa fa-trash"></i></a>
@@ -88,6 +86,13 @@
                             class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </td>
+                <?php }else{?>
+                <?php if($username == $_SESSION['username']){?>
+                <td><a href="index.php?act=profile">View profile</a></td>
+                <?php }else{?>
+                <td><a href="index.php?act=information&&id=<?=$id?>">View information</a></td>
+                <?php } ?>
+                <?php }?>
             </tr>
             <?php }  ?>
         </table>

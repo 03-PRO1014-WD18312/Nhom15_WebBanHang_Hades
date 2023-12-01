@@ -32,7 +32,7 @@ $countCart = countCart();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
+    <title>Hades-Localbrand</title>
 	<?php include '../lib.php'; ?>
 </head>
 <body class="js">
@@ -68,7 +68,7 @@ $countCart = countCart();
 							<ul class="list-main">
 								<li><i class="ti-location-pin"></i> Store location</li>
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-								<?php if(isset($_SESSION['loggedin'])):?>
+								<?php if(isset($_SESSION['loggedin']) && $_SESSION['role'] == 0):?>
 								<?php foreach($_SESSION['user'] as $logged):?>
 								<li> <a href="#">Welcome,<?php echo $_SESSION['username']?></a></li>
 								<?php endforeach;?>
@@ -136,7 +136,7 @@ $countCart = countCart();
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
 							<div class="sinlge-bar">
-							<?php if(isset($_SESSION['loggedin'])):?>								
+							<?php if(isset($_SESSION['loggedin']) && $_SESSION['role'] == 0	):?>								
 								<a  href="../views/indexAccount.php" class="single-icon"><img style="width:20px;height:20px; border-radius:50%" src="../upload/<?=$_SESSION['avatar']?>" alt=""></a>
 								<?php else:?>
 									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
@@ -148,20 +148,20 @@ $countCart = countCart();
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span><?=$countCart?> Items</span>
-										<a href="#">View Cart</a>
+										<a href="../views/indexCart.php">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 									<?php foreach($listCart as $cart):?>
-											<li>
-											<input type="hidden" name="productQty" class="productQty" value="<?=$cart['product_qty']?>" id="">
-											<input type="hidden" name="input-qty" value="<?=$cart['qty']?>">
-											<a style="cursor:pointer;" class="remove remove-btn" data-id="<?=$cart['id']?>" data-productquantity="<?=$cart['product_qty']?>" data-productid="<?=$cart['product_id']?>" data-cartqty="<?=$cart['qty']?>"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="../images/<?=$cart['product_image']?>" alt="#"></a>
-											<h4><a href="#"><?=$cart['product_name']?></a></h4>
-											<p class="quantity"><?=$cart['qty']?>x - <span class="amount">    <?=($cart['discount'] == 0) ? number_format($cart['product_price']) : number_format($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100))?>VNĐ
-											</span></p>
+										<li>
+										<input type="hidden" name="productQty" class="productQty" value="<?=$cart['product_qty']?>"id="">
+										<input type="hidden" name="input-qty" value="<?=$cart['qty']?>">
+										<a style="cursor:pointer;" class="remove remove-btn" data-id="<?=$cart['id']?>"data-productquantity="<?=$cart['product_qty']?>" data-productid="<?=$cart['product_id']?>"data-cartqty="<?=$cart['qty']?>"><i class="fa fa-remove"></i></a>
+										<a class="cart-img" href="#"><img src="../images/<?=$cart['product_image']?>" alt="#"></a>
+										<h4><a href="#"><?=$cart['product_name']?></a></h4>
+										<p class="quantity"><?=$cart['qty']?>x - <span class="amount">    <?=($cart['discount'] ==0) ? number_format($cart['product_price']) : number_format($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100))?>VNĐ
+										</span></p>
 										</li>
-										<?php endforeach;?>
+									<?php endforeach;?>
 										<!-- <li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
 											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
@@ -181,8 +181,8 @@ $countCart = countCart();
 											}
 										}
 										?>
-											<span>Total</span>
-											<span class="total-amount"><?=number_format($totalAmount)?>VNĐ</span>
+										<span>Total</span>
+										<span class="total-amount"><?=number_format($totalAmount)?>VNĐ</span>
 										</div>
 										<?php if(empty($listCart)):?>
 											<a href="../views/index.php" class="btn animate">Shop now</a>
@@ -279,7 +279,7 @@ $countCart = countCart();
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="#">Home</a></li>
-													<li><a href="../views/indexProdetail.php">Product</a></li>												
+													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">

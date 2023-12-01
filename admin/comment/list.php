@@ -11,27 +11,23 @@
                     <th scope="col">USER RATE</th>
                     <th scope="col">COMMNET</th>
                     <th scope="col">ID PRODUCT</th>
-                    <th scope="col">CREAT AT</th>
+                    <th scope="col">CREATE AT</th>
                     <th scope="col">FUNCTION</th>
                 </tr>
-
                 <?php
-
                 foreach($loadAllCmt as $cmt) {
                     extract($cmt);
-                    $delete = "index.php?act=delete_comment&id=".$review_id;
-
-                
+                    $delete = "index.php?act=delete_comment&id=".$review_id;    
                   ?>
                 <tr>
                     <td><?=$review_id?></td>
-                    <td><?=$user_name?></td>
+                    <td><?=$username?></td>
                     <td><?=$user_rating?></td>
                     <td><?=$user_review?></td>
-                    <td><?=$product_id?></td>
-                    <td><?=1?></td>
+                    <td><?=$product_name?></td>
+                    <td><?= date('l jS, F Y h:i:s A', $datetime)?></td>
                     <td class="text-center">
-                        <a href="<?php echo $delete ?>"
+                        <a onclick="return confirm('Are you sure you want to delete?')"  href="<?php echo $delete ?>"
                             class="py-2 px-3 rounded border border-secondary btn btn-outline-warning"><i
                                 class="fa-solid fa fa-trash"></i></a>
                     </td>
