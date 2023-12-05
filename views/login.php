@@ -14,13 +14,14 @@ session_start();
                 $_SESSION['user'] = $login;
                 $_SESSION['user_id'] = $login[0]['id'];
                 $_SESSION['username'] = $login[0]['username'];
+                $_SESSION['adminName'] = $login[0]['username'];
                 $_SESSION['name'] = $login[0]['ho_ten'];
                 $_SESSION['avatar'] = $login[0]['image'];
                 $_SESSION['pass'] = $login[0]['password'];
                 $_SESSION['success'] = "Welcome ". $_SESSION['username'];
                 if($login[0]['role'] ==0){
                   header("Location:../views/index.php");
-                }else if($login[0]['role'] == 1){
+                }else if($login[0]['role'] == 1 && isset($_SESSION['username'])){
                   header("Location:../admin/index.php");
                 }else{
                   echo "Bạn cần đăng nhập để truy cập trang quản trị";

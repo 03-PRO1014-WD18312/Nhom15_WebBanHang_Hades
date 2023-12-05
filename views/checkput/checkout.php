@@ -215,13 +215,19 @@
                             <ul style="max-height: 250px; overflow-y: auto;">
                                 <?php
 									$totalAmount = 0;
+                                    $_SESSION['productName'] = array();
+                                  
 									foreach ($listCart as $cart):
+                                        $_SESSION['productName'][] = array(
+                                            'product_name' => $cart['product_name'],
+                                        );                               
 									// Tính giá trị cho từng sản phẩm trong giỏ hàng
 									if($cart['discount'] ==0){
 									$cartAmount = $cart['qty'] * $cart['product_price'];
 									$totalAmount += $cartAmount;
 									}else{
-										$totalAmount += ($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100)) * $cart['qty'];
+                                        $cartAmountDis = ($cart['product_price'] - ($cart['product_price'] * $cart['discount']/100)) * $cart['qty'];
+										$totalAmount += $cartAmountDis;
 									}
 									?>
                                 <li style="display: flex; align-items: center; margin-bottom: 35px;">
@@ -247,20 +253,25 @@
                     <div class="single-widget">
                         <h2>Payments</h2>
                         <div class="content">
-                            <!-- <div class="checkbox">
-										<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
-										<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
-									</div> -->
+                        <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+                            <input type="hidden" name="business" value="sb-x7bsa28352189@business.example.com">
+                            <input type="hidden" name="amount" value="<?php echo $totalAmount /23000;?>">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="no_shipping" value="1">
+                            <!-- <input type="hidden" name="no_shipping" value="5"> -->
+                            <input type="hidden" name="return" value="http://localhost/New folder/Nhom15_WebBanHang_Hades/views/checkput/success.php">
+                            <button class="btn" type="submit">Paypal</button>
+                        </form>
                         </div>
                     </div>
                     <!--/ End Order Widget -->
                     <!-- Payment Method Widget -->
-                    <div class="single-widget payement">
+                    <!-- <div class="single-widget payement">
                         <div class="content">
                             <img src="images/payment-method.png" alt="#">
                         </div>
-                    </div>
+                    </div> -->
                     <!--/ End Payment Method Widget -->
                     <!-- Button Widget -->
                     <!-- <div class="single-widget get-button">

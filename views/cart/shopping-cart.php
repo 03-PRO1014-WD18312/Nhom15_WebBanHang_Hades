@@ -60,9 +60,9 @@
                                     value="<?= $cart['product_name'] ?>" id="">
                                 <input type="hidden" name="product_image" class="product_image"
                                     value="<?= $cart['product_image'] ?>" id="">
-                                <input type="text" name="productQty" class="productQty"
+                                <input type="hidden" name="productQty" class="productQty"
                                     value="<?=$cart['product_qty']?>" id="">
-                                <input type="text" name="input-qty" value="<?=$cart['qty']?>">
+                                <input type="hidden" name="input-qty" value="<?=$cart['qty']?>">
                                 <input style="margin-left:80px;" type="number" class="input-num" min="1"
                                     value="<?=$cart['qty']?>">
                                 <!--/ End Input Order -->

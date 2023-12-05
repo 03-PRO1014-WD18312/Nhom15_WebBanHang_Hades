@@ -1,26 +1,21 @@
 <!-- Slider Area -->
 <section class="hero-slider">
 		<!-- Single Slider -->
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-7 col-12">
-									<div class="hero-text">
-										<h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-										<p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-										<div class="button">
-											<a href="#" class="btn">Shop Now!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="flexslider">
+  <ul class="slides">
+    <li>
+      <img src="https://theme.hstatic.net/1000306633/1000891824/14/slideshow_2.jpg?v=646" />
+    </li>
+    <li>
+      <img src="https://theme.hstatic.net/1000306633/1000891824/14/slideshow_3.jpg?v=646" />
+    </li>
+    <li>
+      <img src="https://channel.mediacdn.vn/2021/1/15/photo-1-1610687377609519369399.jpg" />
+    </li>
+    <li>
+      <img src="https://thuvienmuasam.com/uploads/default/optimized/3X/e/e/ee2c5f4389951598b933fcc2c70709d998640e4e_2_1024x636.jpeg" />
+    </li>
+  </ul>
+</div>
 		<!--/ End Single Slider -->
 	</section>

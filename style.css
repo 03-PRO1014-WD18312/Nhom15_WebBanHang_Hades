@@ -5040,6 +5040,29 @@ img{
         padding-top: 0;
     }
 }
+/* Add your custom styling for the read-more-link class */
+a.read-more-link {
+    color: #007bff; /* Set the text color to blue, you can adjust the color as needed */
+    text-decoration: none; /* Remove default underline */
+    font-weight: bold; /* Make the text bold */
+    /* Add other styles as needed */
+}
+
+a.read-more-link:hover {
+    text-decoration: underline; /* Underline on hover */
+    /* Add other styles for hover state */
+}
+/* Add your custom styling for the read-less-link class */
+a.read-less-link {
+    color: #ff0000; /* Set the text color to red, you can adjust the color as needed */
+    text-decoration: underline; /* Add underline */
+    /* Add other styles as needed */
+}
+
+a.read-less-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+    /* Add other styles for hover state */
+}
 /* End product detail */
 /* Pagination */
 .pagination {

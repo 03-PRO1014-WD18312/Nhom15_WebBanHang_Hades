@@ -204,6 +204,12 @@
 <script src="../js/active.js?>"></script>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
+    // Can also be used with $(document).ready()
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
 var rating_data = 0;
 $(document).on('mouseenter', '.submit_star', function() {
 
@@ -365,8 +371,8 @@ function load_rating_data() {
                     var displayReview = userReview;
                     if (userReview.length > 200) {
                         displayReview = userReview.substring(0, 200) +
-                            '... <a href="" onclick="toggleReview(' + count +
-                            '); return false;">Đọc tiếp</a>';
+                            '... <a href="" class="read-more-link" onclick="toggleReview(' + count +
+                            '); return false;">Read more</a>';
                     }
                     html += '<p id="review-text-' + count + '" class="review-text short-text">' +
                         displayReview + '</p>';
@@ -399,9 +405,9 @@ function toggleReview(count) {
     var reviewText = $('#review-text-' + count);
     var shortReview = userReview.substring(0, 200) + '...';
     var readMoreLink = '<a href="#" onclick="toggleReview(' + count +
-        '); return false;" class="read-more-link">Đọc tiếp</a>';
+        '); return false;" class="read-more-link">Read more</a>';
     var readLessLink = '<a href="#" onclick="toggleReview(' + count +
-        '); return false;" class="read-less-link">Thu gọn</a>';
+        '); return false;" class="read-less-link">Read less</a>';
     if (reviewText.hasClass('short-text')) {
         // Lấy nội dung đầy đủ và gán vào thẻ p
         reviewText.html(userReview);
@@ -758,12 +764,11 @@ $(".remove-all").click(function(e) {
         }
     });
 });
-// $(".order").click(function(e) {
-//     //   e.preventDefault(); // Ngăn chặn hành vi mặc định của nút
-//     location.reload(); // Làm mới trang
-//     alert('Order successful'); // Thêm thông báo Alert
-// });
-
+$(".order").click(function(e) {
+    //   e.preventDefault(); // Ngăn chặn hành vi mặc định của nút
+    location.reload(); // Làm mới trang
+    alert('Order successful'); // Thêm thông báo Alert
+});
 <?php if(isset($_SESSION['success'])):?>
 alertify.set('notifier', 'position', 'top-right');
 alertify.success('<p style="color:white;"><?php echo $_SESSION['success']; ?></p>');

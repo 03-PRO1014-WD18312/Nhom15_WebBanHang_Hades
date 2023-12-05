@@ -9,7 +9,7 @@ session_start();
     // $loadTopView = loadTopView();
     include('home/header.php');
     include('home/slider.php');
-    include('home/small-banner.php');
+    // include('home/small-banner.php');
     if(isset($_GET['act']) && $_GET['act'] != ""){
         $act = $_GET['act'];
         switch ($act) {

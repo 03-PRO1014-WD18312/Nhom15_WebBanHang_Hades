@@ -34,4 +34,11 @@ function loadOneOrder($order_id){
     $loadOne = pdo_query($sql);
     return $loadOne;
 }
+function loadOrderDetails($id){
+    $sql = "SELECT * FROM order_detail 
+    JOIN orders ON order_detail.order_id = orders.order_id
+    WHERE order_detail.order_id = '$id'";
+    $listDetail = pdo_query($sql);
+    return $listDetail;
+}
 ?>

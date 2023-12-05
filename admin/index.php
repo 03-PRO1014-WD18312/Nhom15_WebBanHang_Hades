@@ -42,7 +42,6 @@ session_start();
                 $id = $_GET['id'];
                 deleteCategory_from_product ($id);
                 deleteCategory($id);
-
             }
             $listCategory = loadAll_Category ();
             include "category/list.php";                
@@ -74,7 +73,7 @@ session_start();
             break;              
             case "product":
             $categoryFilter =1;
-            $listProduct = loadAll_Product ();
+            $listProduct = loadAll_Product();
             include "product/list.php";
             break;
             case "delete_product": 
@@ -144,6 +143,10 @@ session_start();
                 }
                 include "product/add.php";
                 break;
+            case 'view-order':
+            $listDetail = loadOrderDetails($_GET['id']);
+            include "../admin/oder/view-order.php";
+            break;
             case "edit_product":
                 if(isset($_GET['id'])&&($_GET['id']>0)){  
                     $id = $_GET['id'];

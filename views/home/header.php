@@ -278,7 +278,7 @@ $countCart = countCart();
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="active"><a href="../views/index.php">Home</a></li>
 													<!-- <li><a href="#">Product</a></li>												 -->
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -288,12 +288,13 @@ $countCart = countCart();
 															<li><a href="../views/indexCheckout.php">Checkout</a></li>
 														</ul>
 													</li>
-													<li><a href="#">Pages</a></li>									
-													<li><a href="#">Blog<i class="ti-angle-down"></i></a>
+													<li><a href="#">Pages</a></li>	
+													<li><a href="#">Blog</a></li>									
+													<!-- <li><a href="#">Blog<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
 															<li><a href="#">Blog Single Sidebar</a></li>
 														</ul>
-													</li>
+													</li> -->
 													<li><a href="#">Contact Us</a></li>
 												</ul>
 										</div>

@@ -24,7 +24,7 @@
                     <td><?=$list['payment_method']?></td>
                     <td>
                         <a class="py-2 px-3 rounded border border-secondary btn btn-outline-warning" href="index.php?act=updateStatus&id=<?=urlencode($list['order_id'])?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a class="py-2 px-3 rounded border border-secondary btn btn-outline-warning" href=""><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <a class="py-2 px-3 rounded border border-secondary btn btn-outline-warning" href="index.php?act=view-order&id=<?=urlencode($list['order_id'])?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         <a class="py-2 px-3 rounded border border-secondary btn btn-outline-warning" href=""><i
                         class="fa-solid fa fa-trash"></i></a>
                     </td>
