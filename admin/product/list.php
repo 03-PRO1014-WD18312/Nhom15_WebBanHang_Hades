@@ -68,7 +68,7 @@
                                                 // Tìm Start
                                                 $start = ($currentPage - 1) * $limit;
                                                 // Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
-                                                if(($categoryFilter == 1)){
+                                                if(isset($categoryFilter)&&($categoryFilter == 1)){
 
                                                     $sql1 = "SELECT * FROM `product` LIMIT $start, $limit";
                                                     $listProduct = pdo_query($sql1);
@@ -116,15 +116,13 @@
 
             </table>
             <a class=" btn btn-primary btn-lg p3" href="index.php?act=add_product" class="">ADD PRODUCT</a>
-
-
         </div>
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <?php
 
-if(($categoryFilter == 1)){
+                    if(isset($categoryFilter)&&($categoryFilter == 1)){
                     // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                     if ($currentPage > 1 && $totalPage > 1){
                         // echo '<a href="index.php?page='.($current_page-1).'">Prev</a> | ';

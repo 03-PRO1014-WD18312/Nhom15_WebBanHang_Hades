@@ -12,7 +12,7 @@
     <form action="index.php?act=editStatus" method="POST" class="form-role row">
         <select name="status" id="my_select" class="btn btn-outline-primary btn-lg btn-block col-9">
            <?php foreach($loadOrder as  $load):?>
-            <?php if($load['deli_status'] == "Delivering"):?>
+            <?php if($load['deli_status'] == "Processing"):?>
             <option value="Delivering" selected>Delivering</option>
             <option value="Delivered">Delivered</option>
             <?php else:?>

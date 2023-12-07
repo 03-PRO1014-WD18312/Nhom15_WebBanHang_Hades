@@ -150,7 +150,7 @@ function order($fullName, $email, $phoneNumber, $address) {
     $totalAmount = $_POST['total-amount'];
     $orderId = '#PRO' . substr(uniqid(), -3);
     $deli_status = "Processing";
-    $sqlOrder = "INSERT INTO orders (order_id, customer_id, order_date, total_amount,deli_status,status, payment_method) 
+    $sqlOrder = "INSERT INTO orders (order_id, customer_id, order_date, total_amount,deli_status, payment_method) 
     VALUES ('$orderId', '$cusId', '$orderDate', '$totalAmount','$deli_status', '$payMethod')";
     pdo_execute($sqlOrder);  
         $listCart = loadCart();

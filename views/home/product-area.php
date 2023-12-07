@@ -39,7 +39,6 @@
                         <?php for ($i = 0; $i < count($listCate); $i++): ?>
                         <div class="tab-pane fade <?=($i === 0) ? 'show active' : ''?>"
                             id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
-                            <?php $productExitst = true;?>
                             <div class="tab-single">
                                 <div class="row">
                                     <?php $productExitst = false;?>
@@ -104,11 +103,6 @@
                             </div>
                         </div>
                         <?php endfor;?>
-                        <?php if(!$productExitst):?>
-                        <div class="col-12">
-                            <p>Product not available yet.</p>
-                        </div>
-                        <?php endif;?>
                         <!--/ End Single Tab -->
                         <!-- Start Single Tab -->
                         <!-- <div class="tab-pane fade" id="Bottoms" role="tabpanel">
