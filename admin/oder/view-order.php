@@ -15,14 +15,14 @@
                     <th scope="col">DELI STATUS</th>
                     <th scope="col">PAYMENT METHOD</th>
                 </tr>
-                <tr>
-                    <?php foreach($listDetail as $list):?>
+                <?php foreach($listDetail as $list):?>
+                <tr>      
                     <td><?=$list['detail_id']?></td>
                     <td><?=$list['order_id']?></td>
                     <td><?=$list['order_date']?></td>           
-                    <td><?=$list['price']?></td>
+                    <td><?=number_format($list['price'])?>VNĐ</td>
                     <td><?=$list['quantity']?></td>
-                    <td><?=$list['total_amount']?> VNĐ</td>
+                    <td><?=number_format($list['price'] * $list['quantity'])?>VNĐ</td>
                     <td><?=$list['deli_status']?></td>
                     <td><?=$list['payment_method']?></td>
                     <!-- <td>
@@ -31,8 +31,8 @@
                         <a class="py-2 px-3 rounded border border-secondary btn btn-outline-warning" href=""><i
                         class="fa-solid fa fa-trash"></i></a>
                     </td> -->
-                    <?php endforeach;?>
                 </tr>
+                <?php endforeach;?>
             </thead>
         </table>
 

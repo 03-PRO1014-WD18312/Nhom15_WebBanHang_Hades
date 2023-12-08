@@ -30,6 +30,9 @@ session_start();
                 if (validate_alpha($categoryName)) {
                     $error[] = "Tên chỉ chứa ký tự chữ.";
                 }
+                if(!empty(checkNameExtistCate($categoryName))){
+                    $error[] = "Tên danh mục đã tồn tại.";
+                }
                 else{
                 insert_category($categoryName);
                 $check = "ADDED SUCCESSFULLY";
@@ -123,17 +126,14 @@ session_start();
                         $error['productPrice'] = "Yêu cầu nhập vào giá sản phẩm";
                     } else if(!validate_numeric_length($productPrice)){
                         $error['productPrice'] = "Giá hợp lệ chỉ chứa ký tự số và có độ dài lớn hơn 4 ký tự";
+                    }else if (!empty(checkNameProduct(trim($_POST['productName'])))) {
+                        $error['productNameExist'] = "Tên sản phẩm đã tồn tại";
+                    }else if($disCount >100){
+                        $error['discount'] = "Giảm giá không thể quá 100%";
                     }
-                    // if(empty($disCount)){
-                    //     $error['discount'] = "Yêu cầu nhập vào giá sản phẩm";
-                    // }
                     if(empty($productQty)){
                         $error['productQty'] = "Yêu cầu nhập vào số lượng sản phẩm";
                     }
-                    // checkError($productName,$productPrice,$disCount,$productQty);
-                    // echo "<pre>";
-                    // print_r($error);
-                    //  echo "</pre>";
                     if(empty($error)){
                         insert_product($productName,$productPrice, $disCount,$productQty,$productImage,$imageDt1, $imageDt2, $imageDt3,$category,$des,$createdAt);
                         $check = "ADDED SUCCESSFULLY";
@@ -153,7 +153,6 @@ session_start();
                     $productOne = loadOneProduct ($id);
                 }
                 // var_dump($productOne);
-
                 $listCategory = loadAll_Category();
                 include "product/update.php";                
                 break;    
@@ -260,10 +259,7 @@ session_start();
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
                     $categoryFilter=0;
-                    // echo "<pre>";
-                    // print_r($listPro);
-                    // echo "</pre>";
-            }
+                }
                 $listProduct = loadAllProForCate ($id);
                 include "product/list.php";
                 break; 

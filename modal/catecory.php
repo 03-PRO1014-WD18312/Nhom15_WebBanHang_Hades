@@ -19,16 +19,18 @@
         $listCategory = pdo_query_one($sql);
         return $listCategory;
     }
-
     function deleteCategory ($id){
         $sql = "DELETE FROM `category` WHERE `category`.`id`=$id";
         pdo_execute($sql);  
     }
-    
     function deleteCategory_from_product ($id){
         deleteAll ($id);
         $sql = "DELETE FROM `category` WHERE `category`.`id`=$id";
         pdo_execute($sql);  
     }
-    
+    function checkNameExtistCate($category_name){
+        $sql = "SELECT * FROM category WHERE category_name ='$category_name'";
+        $listExistCate = pdo_query($sql);
+        return $listExistCate;
+    }  
 ?>

@@ -19,7 +19,6 @@ if(!empty($_GET))
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,10 +49,9 @@ if(!empty($_GET))
         <td><?php echo $totalQty;?></td>
       </tr>
       <tr>
-        <td>Total </td>
+        <td>Total</td>
         <td><?php echo number_format($totalAmount);?>VNĐ</td>
       </tr>
-	  
 	    <tr>
         <td>Payment Status</td>
         <td><?php echo $_SESSION['status'];?></td>
@@ -63,6 +61,5 @@ if(!empty($_GET))
   </table>
   <a href="../index.php">Continue to shopping</a>
 </div>
-
 </body>
 </html>

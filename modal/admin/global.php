@@ -29,6 +29,11 @@ function updateDeliStatus ($id,$deli_stat){
     $sql = "UPDATE `orders` SET `deli_status` = '$deli_stat' WHERE `orders`.`order_id` = '$id'";
     pdo_execute($sql);
 }
+function checkNameProduct($productName){
+$sql = "SELECT * FROM product WHERE product_name ='$productName'";
+$check = pdo_query($sql);
+return $check;
+}
 function loadOneOrder($order_id){
     $sql = "SELECT * FROM orders WHERE order_id ='$order_id'";
     $loadOne = pdo_query($sql);

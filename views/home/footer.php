@@ -333,14 +333,6 @@ function load_rating_data() {
             $('#average_rating').text(data.average_rating);
             $('#total_review').text(data.total_review);
             var count_star = 0;
-            // $('.main_star').each(function(){
-            //     count_star++;
-            //     if(Math.ceil(data.average_rating) >= count_star)
-            //     {
-            //         $(this).addClass('text-warning');
-            //         $(this).addClass('star-light');
-            //     }
-            // });
             $('#total_five_star_review').text(data.five_star_review);
 
             $('#total_four_star_review').text(data.four_star_review);
@@ -425,7 +417,6 @@ function toggleReview(count) {
         // Thêm nút "Read more" và xóa nút "Read less"
         reviewText.next('.read-less-link').remove();
         if (!reviewText.hasClass('read-more-link')) {
-            // dùng append để add readMorelink nằng trong thẻ p
             reviewText.append(readMoreLink);
         }
     }

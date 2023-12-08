@@ -261,7 +261,11 @@
                             <input type="hidden" name="no_shipping" value="1">
                             <!-- <input type="hidden" name="no_shipping" value="5"> -->
                             <input type="hidden" name="return" value="http://localhost/New folder/Nhom15_WebBanHang_Hades/views/checkput/success.php">
-                            <button class="btn" type="submit">Paypal</button>
+                           <?php if(empty($listCart)):?>
+                            <h2>Noting to Pay</h2>
+                            <?php else:?>
+                                <button class="btn" type="submit">Paypal</button>
+                            <?php endif;?>
                         </form>
                         </div>
                     </div>

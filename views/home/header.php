@@ -54,20 +54,20 @@ $countCart = countCart();
 				<div class="row">
 					<div class="col-lg-4 col-md-12 col-12">
 						<!-- Top Left -->
-						<div class="top-left">
+						<!-- <div class="top-left">
 							<ul class="list-main">
 								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
 								<li><i class="ti-email"></i>support@shophub.com</li>
 							</ul>
-						</div>
+						</div> -->
 						<!--/ End Top Left -->
 					</div>
 					<div class="col-lg-8 col-md-12 col-12">
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> Store location</li>
-								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+								<!-- <li><i class="ti-location-pin"></i> Store location</li> -->
+								<!-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> -->
 								<?php if(isset($_SESSION['loggedin']) && $_SESSION['role'] == 0):?>
 								<?php foreach($_SESSION['user'] as $logged):?>
 								<li> <a href="#">Welcome,<?php echo $_SESSION['username']?></a></li>
@@ -132,9 +132,9 @@ $countCart = countCart();
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
 							<!-- Search Form -->
-							<div class="sinlge-bar">
+							<!-- <div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
+							</div> -->
 							<div class="sinlge-bar">
 							<?php if(isset($_SESSION['loggedin']) && $_SESSION['role'] == 0	):?>								
 								<a  href="../views/indexAccount.php" class="single-icon"><img style="width:20px;height:20px; border-radius:50%" src="../upload/<?=$_SESSION['avatar']?>" alt=""></a>

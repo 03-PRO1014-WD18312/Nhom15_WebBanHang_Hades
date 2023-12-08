@@ -36,6 +36,10 @@ if(isset($_GET['act']) && $_GET['act'] != ""){
         $listDetails = showOrderDetails(urldecode($_GET['orderId']) );
         include "../views/account-detail/billing-detail.php";
         break;
+        case 'listRating':
+        $listRating = loadRating($_SESSION['user_id']);
+        include "../views/account-detail/account-rating.php";
+        break;
         default: 
         include '../views/account-detail/account-info.php';
         break;

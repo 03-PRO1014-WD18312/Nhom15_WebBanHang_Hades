@@ -12,6 +12,7 @@
             placeholder="Tên sản phẩm...">
         <p class="font-italic text-danger">
             <?=(isset($error['productName'])) ? $error["productName"]:false;?>
+            <?=(isset($error['productNameExist'])) ? $error["productName"]:false;?>
         </p>
         <label for="">Giá Sản Phẩm</label>
         <input type="text" class="input-group form-control form-control-sm" name="productPrice"
@@ -19,7 +20,7 @@
         <p class="font-italic text-danger"><?=(isset($error['productPrice'])) ? $error['productPrice'] :false;?></p>
         <label for="">Giảm giá</label>
         <input type="text" class="input-group form-control form-control-sm" name="discount" placeholder="Giảm giá...">
-        <p class="font-italic text-danger"><?=(isset($error['discount'])) ? $error["productPrice"]:false;?></p>
+        <p class="font-italic text-danger"><?=(isset($error['discount'])) ? $error["discount"]:false;?></p>
         <label for="">Số lượng</label>
         <input type="text" class="input-group form-control form-control-sm" name="productQty" placeholder="Số lượng...">
         <p class="font-italic text-danger"><?=(isset($error['productQty'])) ? $error["productQty"]:false;?></p>

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Trending Item</h2>
+                    <h2>List Item</h2>
                 </div>
             </div>
         </div>
@@ -41,7 +41,6 @@
                             id="<?=$listCate[$i]['category_name']?>" role="tabpanel">
                             <div class="tab-single">
                                 <div class="row">
-                                    <?php $productExitst = false;?>
                                     <?php foreach ($listPro as $pro): ?>
                                     <?php if ($pro['category'] == $listCate[$i]['id']): ?>
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-12">
@@ -60,11 +59,11 @@
                                                             data-id="<?php echo $pro['product_id'] ?>"
                                                             title="Quick View"><i class=" ti-eye"></i><span>Quick
                                                                 Shop</span></a>
-                                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add
+                                                        <!-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add
                                                                 to Wishlist</span></a>
                                                         <a title="Compare" href="#"><i
                                                                 class="ti-bar-chart-alt"></i><span>Add to
-                                                                Compare</span></a>
+                                                                Compare</span></a> -->
                                                     </div>
                                                     <div class="product-action-2">
                                                         <?php if($pro['product_qty'] == 0): ?>

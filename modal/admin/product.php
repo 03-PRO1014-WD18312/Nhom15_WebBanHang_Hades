@@ -74,14 +74,14 @@
         // var_dump($listPro);
 
     }
-    function loadPagi($startIndex,$productsPerpage){
-        $sql ="SELECT * FROM product LIMIT $startIndex, $productsPerpage";
-        $products = pdo_query($sql);
-        return $products;
-    }
-    function totalPro(){
-        $sql = "select count(*) from product";
-        $totalPro =pdo_query_column($sql);
-        return $totalPro;
-    }
+    // function loadPagi($startIndex,$productsPerpage){
+    //     $sql ="SELECT * FROM product LIMIT $startIndex, $productsPerpage";
+    //     $products = pdo_query($sql);
+    //     return $products;
+    // }
+    // function totalPro(){
+    //     $sql = "select count(*) from product";
+    //     $totalPro =pdo_query_column($sql);
+    //     return $totalPro;
+    // }
 ?>

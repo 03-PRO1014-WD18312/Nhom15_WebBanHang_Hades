@@ -19,7 +19,7 @@
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="../views/indexAccount.php">Profile</a>
             <a class="nav-link" href="../views/indexAccount.php?act=billing">Billing</a>
-            <a class="nav-link" href="">Security</a>
+            <a class="nav-link" href="../views/indexAccount.php?act=listRating">List rating</a>
             <a class="nav-link" href="" >Notifications</a>
         </nav>
         <?php foreach($showAccountInfo as $acc):?>

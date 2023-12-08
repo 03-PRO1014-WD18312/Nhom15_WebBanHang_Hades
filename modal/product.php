@@ -174,3 +174,12 @@ function del_rate($id){
     pdo_execute($sql);
 
 }
+function loadRating($id){
+    $sql = "SELECT review_table.*, product.product_name, account.username
+    FROM review_table
+    JOIN product ON review_table.product_id = product.product_id
+    JOIN account ON review_table.user_id = account.id WHERE review_table.user_id = '$id';
+    ";
+    $listRating = pdo_query($sql);
+    return $listRating;
+}

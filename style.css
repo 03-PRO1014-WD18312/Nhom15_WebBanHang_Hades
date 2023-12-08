@@ -5018,7 +5018,9 @@ img{
     border-color: transparent;
     color: #fff;
 }
-
+.flex-direction-nav{
+	position: relative;
+}
 @media screen and (min-width: 992px){
     .card{
         display: grid;

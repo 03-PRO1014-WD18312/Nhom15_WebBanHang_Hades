@@ -11,8 +11,9 @@
                 Category
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="http://localhost/Nhom15_WebBanHang_Hades/admin/index.php?act=product"
-                    value="0" selected>All</a>
+                <a class="dropdown-item"
+                    href="http://localhost/New folder/Nhom15_WebBanHang_Hades/admin/index.php?act=product" value="0"
+                    selected>All</a>
 
                 <?php 
             foreach($listCategory as $category) {
@@ -28,22 +29,22 @@
         <div class="row2 form_content pt-4">
             <table class="table table-boder table-striped-columns table-bordered  ">
                 <thead class="">
-                    <tr class="">
-                        <th scope="col">Product Id</th>
-                        <th scope="col">Product name</th>
-                        <th scope="col">Product price</th>
-                        <th scope="col">Discount</th>
-                        <th scope="col">Product pty</th>
-                        <th scope="col">Product image</th>
-                        <th scope="col">Image dt1</th>
-                        <th scope="col">Image dt2</th>
-                        <th scope="col">Image dt3</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Des</th>
-                        <th scope="col">Created at</th>
-                        <th scope="col">Function</th>
-                        <img src="" alt="">
+                    <tr>
+                        <th style="width: 80px; text-align: center; padding: 10px;">Product Id</th>
+                        <th style="width: 150px; text-align: center; padding: 10px;">Product name</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Product price</th>
+                        <th style="width: 80px; text-align: center; padding: 10px;">Discount</th>
+                        <th style="width: 80px; text-align: center; padding: 10px;">Product pty</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Product image</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Image dt1</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Image dt2</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Image dt3</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Category</th>
+                        <th style="width: 150px; text-align: center; padding: 10px;">Des</th>
+                        <th style="width: 120px; text-align: center; padding: 10px;">Created at</th>
+                        <th style="width: 120px; text-align: center; padding: 10px;">Function</th>
                     </tr>
+
                 </thead>
                 <?php
                                                 $sql = "SELECT COUNT(*) AS `total` FROM `product`";
